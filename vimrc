@@ -163,8 +163,6 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
-" colorscheme を設定する
-colorscheme molokai
 
 "---------------------------------------------------------------------------
 " ファイル操作に関する設定:
@@ -196,7 +194,13 @@ if has('unix') && !has('gui_running')
     set term=builtin_xterm
   endif
   unlet uname
+  set t_Co=256
 endif
+
+"---------------------------------------------------------------------------
+" colorscheme を設定する
+"let g:molokai_original=1
+colorscheme molokai
 
 "---------------------------------------------------------------------------
 " コンソール版で環境変数$DISPLAYが設定されていると起動が遅くなる件へ対応
