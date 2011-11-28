@@ -55,7 +55,8 @@ if 0 && exists('$HOME') && filereadable($HOME . '/.vimrc_first.vim')
 endif
 
 " vimfilesディレクトリをruntimepathへ追加する。
-let &runtimepath = &runtimepath . ',' . '~/vimfiles'
+set rtp+=$HOME/vimfiles
+"let &runtimepath = &runtimepath . ',' . $HOME.'/vimfiles'
 
 "---------------------------------------------------------------------------
 " 日本語対応のための設定:

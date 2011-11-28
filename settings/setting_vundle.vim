@@ -1,5 +1,5 @@
 filetype off
-set rtp+=~/vimfiles/vundle
+set rtp+=$HOME/vimfiles/vundle
 call vundle#rc()
 
 " My Bundles here:
@@ -7,6 +7,7 @@ call vundle#rc()
 " original repos on github
 " ie. Bundle 'username/repo'
 Bundle 'Shougo/unite.vim'
+Bundle 'koron/chalice'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
