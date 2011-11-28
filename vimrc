@@ -55,7 +55,7 @@ if 0 && exists('$HOME') && filereadable($HOME . '/.vimrc_first.vim')
 endif
 
 " vimfilesディレクトリをruntimepathへ追加する。
-let &runtimepath = &runtimepath . ',' . $HOME . '/vimfiles'
+let &runtimepath = &runtimepath . ',' . '~/vimfiles'
 
 "---------------------------------------------------------------------------
 " 日本語対応のための設定:
@@ -221,4 +221,5 @@ if has('mac')
   set iskeyword=@,48-57,_,128-167,224-235
 endif
 
-" Copyright (C) 2011 KaoriYa/MURAOKA Taro
+" vundle plugin の設定
+source $HOME/vimfiles/settings/setting_vundle.vim
