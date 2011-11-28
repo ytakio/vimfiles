@@ -2,20 +2,18 @@ filetype off
 set rtp+=~/vimfiles/vundle
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
 " My Bundles here:
 "
 " original repos on github
 " ie. Bundle 'username/repo'
+Bundle 'Shougo/unite.vim'
 
 " vim-scripts repos
-" ie. 'scriptname'
+" ie. Bundle 'scriptname'
+Bundle 'ScrollColors'
 
 " non github repos
-" ie. 'git://git.repo/file.git'
+" ie. Bundle 'git://git.repo/file.git'
 
 filetype plugin indent on     " required! 
 
