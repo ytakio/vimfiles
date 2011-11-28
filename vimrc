@@ -163,8 +163,8 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
-" 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
-"colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
+" colorscheme を設定する
+colorscheme molokai
 
 "---------------------------------------------------------------------------
 " ファイル操作に関する設定:
