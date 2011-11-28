@@ -12,6 +12,7 @@ Bundle 'koron/chalice'
 " vim-scripts repos
 " ie. Bundle 'scriptname'
 Bundle 'ScrollColors'
+Bundle 'taglist.vim'
 
 " non github repos
 " ie. Bundle 'git://git.repo/file.git'
