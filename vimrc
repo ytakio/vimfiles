@@ -222,5 +222,15 @@ if has('mac')
   set iskeyword=@,48-57,_,128-167,224-235
 endif
 
+"---------------------------------------------------------------------------
+" 実行ファイルのPATH追加
+"for path in split(glob($HOME.'/vimfiles/bins/*'), '\n')
+"  if isdirectory(path) | let $PATH = $PATH . ':' .path | end
+"endfor
+
 " vundle plugin の設定
 source $HOME/vimfiles/settings/setting_vundle.vim
+
+" keymappint の設定
+source $HOME/vimfiles/settings/keymaps.vim
+
