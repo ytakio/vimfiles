@@ -91,6 +91,9 @@ if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
   set termencoding=cp932
 endif
 
+" 日本語helpの優先度を上げる
+set helplang=ja,en
+
 "---------------------------------------------------------------------------
 " メニューファイルが存在しない場合は予め'guioptions'を調整しておく
 if 0 && !filereadable($VIMRUNTIME . '/menu.vim') && has('gui_running')

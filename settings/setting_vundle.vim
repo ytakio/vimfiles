@@ -14,8 +14,10 @@ call vundle#rc()
 Bundle 'ScrollColors'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'taglist.vim'
-Bundle 'The-NERD-tree'
+"Bundle 'The-NERD-tree'
 Bundle 'trinity.vim'
+Bundle 'grep.vim'
+Bundle 'vim-jp/vimdoc-ja'
 
 " non github repos
 " ie. Bundle 'git://git.repo/file.git'

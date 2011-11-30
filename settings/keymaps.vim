@@ -1,4 +1,9 @@
 "-------------------------------------------------------
+" For taglist.vim
+" Open and close TagList
+nmap <F7>   :TlistToggle<CR> 
+
+"-------------------------------------------------------
 " For trinity.vim
 " Open and close all the three plugins on the same time 
 nmap <F8>   :TrinityToggleAll<CR> 
