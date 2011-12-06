@@ -7,7 +7,7 @@ call vundle#rc()
 " original repos on github
 " ie. Bundle 'username/repo'
 "Bundle 'Shougo/unite.vim'
-"Bundle 'koron/chalice'
+Bundle 'koron/chalice'
 Bundle 'vim-jp/vimdoc-ja'
 
 " vim-scripts repos
@@ -18,6 +18,7 @@ Bundle 'taglist.vim'
 "Bundle 'The-NERD-tree'
 Bundle 'trinity.vim'
 Bundle 'grep.vim'
+"Bundle 'OmniCppComplete'
 
 " non github repos
 " ie. Bundle 'git://git.repo/file.git'
