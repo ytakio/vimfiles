@@ -1,0 +1,3 @@
+settings/ ------------- for sequential setting
+        |
+        + bulkload/ --- for wild card *.vim load
