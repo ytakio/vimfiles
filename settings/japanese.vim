@@ -94,7 +94,10 @@ if !has('gui_running') && &encoding != 'cp932' && &term == 'win32'
   set termencoding=cp932
 endif
 
+"---------------------------------------------------------------------------
+" autofmt: 日本語文章のフォーマット(折り返し)プラグイン
+set formatexpr=autofmt#japanese#formatexpr()
+
 " 日本語helpの優先度を上げる
 set helplang=ja,en
 
-"---------------------------------------------------------------------------
