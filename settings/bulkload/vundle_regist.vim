@@ -8,6 +8,7 @@ call vundle#rc()
 " ie. Bundle 'username/repo'
 "Bundle 'Shougo/unite.vim'
 "Bundle 'koron/chalice'
+Bundle 'vim-jp/vimdoc-ja'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
@@ -17,7 +18,6 @@ Bundle 'taglist.vim'
 "Bundle 'The-NERD-tree'
 Bundle 'trinity.vim'
 Bundle 'grep.vim'
-Bundle 'vim-jp/vimdoc-ja'
 
 " non github repos
 " ie. Bundle 'git://git.repo/file.git'
