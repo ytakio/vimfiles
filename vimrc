@@ -1,9 +1,11 @@
 " vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 
+"---------------------------------------------------------------------------
 " vimfilesディレクトリをruntimepathへ追加する。
 set rtp+=$HOME/vimfiles
-"let &runtimepath = &runtimepath . ',' . $HOME.'/vimfiles'
 
+"---------------------------------------------------------------------------
+" 各種設定を始める前に日本語向けエンコーディング設定をしておく
 source $HOME/vimfiles/settings/japanese.vim
 
 "---------------------------------------------------------------------------
@@ -37,6 +39,6 @@ for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
   execute 'source' dot_vim 
 endfor
 
-" keymappint の設定
+" 最後に全キーマッピングを設定
 source $HOME/vimfiles/settings/keymaps.vim
 

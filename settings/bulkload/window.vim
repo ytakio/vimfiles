@@ -22,3 +22,26 @@ set showcmd
 " タイトルを表示
 set title
 
+
+"---------------------------------------------------------------------------
+"ステータスラインに文字コードやBOM、16進表示等表示
+if has('iconv')
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\ 
+else
+  set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
+endif
+
+function! FencB()
+  let c = matchstr(getline('.'), '.', col('.') - 1)
+  let c = iconv(c, &enc, &fenc)
+  return s:Byte2hex(s:Str2byte(c))
+endfunction
+
+function! s:Str2byte(str)
+  return map(range(len(a:str)), 'char2nr(a:str[v:val])')
+endfunction
+
+function! s:Byte2hex(bytes)
+  return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
+endfunction
+

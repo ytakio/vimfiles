@@ -1,3 +1,9 @@
+" カーソルを表示行で移動
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+
 "-------------------------------------------------------
 " For taglist.vim
 " Open and close TagList
