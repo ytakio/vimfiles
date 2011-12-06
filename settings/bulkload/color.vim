@@ -22,3 +22,8 @@ endif
 "let g:molokai_original=1
 colorscheme molokai
 
+"---------------------------------------------------------------------------
+" 全角スペース
+highlight JpSpace cterm=underline
+au BufRead,BufNew * match JpSpace /　/
+
