@@ -14,7 +14,7 @@ Bundle 'msanders/snipmate.vim'
 " vim-scripts repos
 " ie. Bundle 'scriptname'
 Bundle 'ScrollColors'
-Bundle 'Source-Explorer-srcexpl.vim'
+"Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'taglist.vim'
 Bundle 'The-NERD-tree'
 "Bundle 'trinity.vim'
