@@ -9,14 +9,15 @@ call vundle#rc()
 "Bundle 'Shougo/unite.vim'
 Bundle 'koron/chalice'
 Bundle 'vim-jp/vimdoc-ja'
+Bundle 'msanders/snipmate.vim'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
 Bundle 'ScrollColors'
 Bundle 'Source-Explorer-srcexpl.vim'
 Bundle 'taglist.vim'
-"Bundle 'The-NERD-tree'
-Bundle 'trinity.vim'
+Bundle 'The-NERD-tree'
+"Bundle 'trinity.vim'
 Bundle 'grep.vim'
 "Bundle 'OmniCppComplete'
 
