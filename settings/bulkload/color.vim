@@ -24,6 +24,7 @@ colorscheme molokai
 
 "---------------------------------------------------------------------------
 " 全角スペース
+" TODO:ハイライトが判りににくい
 highlight JpSpace cterm=underline
 au BufRead,BufNew * match JpSpace /　/
 

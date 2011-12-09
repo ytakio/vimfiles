@@ -24,7 +24,7 @@ Bundle 'grep.vim'
 " non github repos
 " ie. Bundle 'git://git.repo/file.git'
 
-filetype plugin indent on     " required! 
+filetype plugin indent on     " required!
 
 " Brief help
 " :BundleList          - list configured bundles

@@ -36,7 +36,7 @@ endif
 " 設定スクリプトの読み込み
 " 読み込み順は保証されない
 for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
-  execute 'source' dot_vim 
+  execute 'source' dot_vim
 endfor
 
 " 最後に全キーマッピングを設定
