@@ -26,5 +26,5 @@ set formatoptions+=mM
 " ファイル操作に関する設定:
 "
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
-set nobackup
+"set nobackup
 
