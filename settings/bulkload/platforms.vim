@@ -21,6 +21,8 @@ endif
 " WinではPATHに$VIMが含まれていないときにexeを見つけ出せないので修正
 if has('win32') && $PATH !~? '\(^\|;\)' . escape($VIM, '\\') . '\(;\|$\)'
   let $PATH = $VIM . ';' . $PATH
+  let $PATH = 'C:\Program Files (x86)\Git\bin' . ';' . $PATH
+  let $PATH = 'D:\Program\ctags' . ';' . $PATH
 endif
 
 if has('mac')
