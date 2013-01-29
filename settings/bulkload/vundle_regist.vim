@@ -7,7 +7,6 @@ call vundle#rc()
 " original repos on github
 " ie. Bundle 'username/repo'
 "Bundle 'vim-jp/vimdoc-ja'
-Bundle 'fholgado/minibufexpl.vim'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
