@@ -16,5 +16,5 @@ nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 "-------------------------------------------------------
 " For NERDTree
-nnoremap <silent> <C-N> :NERDTreeToggle<CR>
+nnoremap <silent> <C-N> :NERDTreeToggle $PWD<CR>
 

@@ -19,12 +19,22 @@ endif
 
 "---------------------------------------------------------------------------
 " colorscheme を設定する
-"let g:molokai_original=1
+let g:molokai_original=1
 colorscheme molokai
 
 "---------------------------------------------------------------------------
+" 見にくいハイライトを上書き
+"---------------------------------------------------------------------------
 " 全角スペース
-" TODO:ハイライトが判りににくい
 highlight JpSpace cterm=underline
 au BufRead,BufNew * match JpSpace /　/
+" コメント
+highlight Comment ctermfg=68
+" カーソル
+highlight CursorLine ctermbg=236
+highlight CursorColumn ctermbg=236
 
+"---------------------------------------------------------------------------
+" cursor line
+set cursorline
+set cursorcolumn
