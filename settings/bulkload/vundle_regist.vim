@@ -10,6 +10,7 @@ Bundle 'vim-jp/vimdoc-ja'
 Bundle 'majutsushi/tagbar'
 Bundle 'kana/vim-tabpagecd'
 Bundle 'tomasr/molokai'
+Bundle 'Shougo/neocomplcache'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'

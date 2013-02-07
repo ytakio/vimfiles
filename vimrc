@@ -34,6 +34,7 @@ endif
 
 "---------------------------------------------------------------------------
 " 設定スクリプトの読み込み
+source $HOME/vimfiles/settings/preset.vim
 " 読み込み順は保証されない
 for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
   execute 'source' dot_vim
