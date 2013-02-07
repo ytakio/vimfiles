@@ -10,9 +10,9 @@ nnoremap <Up> gk
 nnoremap s/ :%s//gc<left><left><left>
 
 "-------------------------------------------------------
-" For taglist.vim
-" Open and close TagList
-nnoremap <silent> <F8> :TlistToggle<CR>
+" For Tagbar
+" Open and close Tagbar
+nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 "-------------------------------------------------------
 " For NERDTree
