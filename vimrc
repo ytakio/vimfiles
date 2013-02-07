@@ -40,5 +40,7 @@ for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
 endfor
 
 " 最後に全キーマッピングを設定
+source $HOME/vimfiles/settings/color.vim
+" 最後に全キーマッピングを設定
 source $HOME/vimfiles/settings/keymaps.vim
 

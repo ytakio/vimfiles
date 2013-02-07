@@ -8,6 +8,8 @@ call vundle#rc()
 " ie. Bundle 'username/repo'
 Bundle 'vim-jp/vimdoc-ja'
 Bundle 'majutsushi/tagbar'
+Bundle 'kana/vim-tabpagecd'
+Bundle 'tomasr/molokai'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
