@@ -11,21 +11,21 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Recommended to install
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'tomasr/molokai'
 
 " My Bundles here:
 "
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'tomasr/molokai'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
@@ -46,5 +46,11 @@ filetype plugin indent on     " Required!
 " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
 
 " Installation check.
-NeoBundleCheck
+"NeoBundleCheck
+if neobundle#exists_not_installed_bundles()
+	echomsg 'Not installed bundles : ' .
+				\ string(neobundle#get_not_installed_bundle_names())
+	echomsg 'Please execute ":NeoBundleInstall" command.'
+	"finish
+endif
 
