@@ -45,6 +45,3 @@ source $HOME/vimfiles/settings/neobundle_setting.vim
 source $HOME/vimfiles/settings/color.vim
 " 最後に全キーマッピングを設定
 source $HOME/vimfiles/settings/keymaps.vim
-
-" デフォルトのCWDはhomeで
-cd ~
