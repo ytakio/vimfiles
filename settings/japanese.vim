@@ -10,6 +10,8 @@
 " 動判別機能を利用する場合には別途iconv.dllが必要。iconv.dllについては
 " README_w32j.txtを参照。ユーティリティスクリプトを読み込むことで設定される。
 
+" set defualt encoding to UTF-8
+set encoding=utf-8
 " 文字コードの自動認識
 if &encoding !=# 'utf-8'
   set encoding=japan

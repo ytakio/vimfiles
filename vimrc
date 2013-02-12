@@ -40,8 +40,9 @@ for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
   execute 'source' dot_vim
 endfor
 
-" 最後に全キーマッピングを設定
+" plugin manager
+source $HOME/vimfiles/settings/neobundle_setting.vim
+" 環境設定が終わったのでカラースキム
 source $HOME/vimfiles/settings/color.vim
 " 最後に全キーマッピングを設定
 source $HOME/vimfiles/settings/keymaps.vim
-

@@ -16,5 +16,5 @@ nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 "-------------------------------------------------------
 " For NERDTree
-nnoremap <silent> <C-N> :NERDTree $PWD<CR>
+nnoremap <silent> <C-N> :execute 'NERDTree ' . getcwd()<CR>
 
