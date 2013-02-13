@@ -23,6 +23,8 @@ if has('win32') && $PATH !~? '\(^\|;\)' . escape($VIM, '\\') . '\(;\|$\)'
   let $PATH = $VIM . ';' . $PATH
   let $PATH = 'C:\Program Files (x86)\Git\bin' . ';' . $PATH
   let $PATH = 'D:\Program\ctags' . ';' . $PATH
+  set iminsert=0
+  set imsearch=-1
 endif
 
 if has('mac')

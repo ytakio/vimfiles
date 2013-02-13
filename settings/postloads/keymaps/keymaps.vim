@@ -4,6 +4,17 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
+nnoremap @ <Esc>
+nnoremap <C-@> @
+nnoremap <C-@><C-@> @@
+"-------------------------------------------------------
+" at insert mode
+inoremap @ <Esc>
+inoremap <C-@> @
+"-------------------------------------------------------
+" at command mode
+cnoremap  @ <C-C>
+cnoremap <C-@> @
 
 "-------------------------------------------------------
 " For replace command
