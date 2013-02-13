@@ -1,3 +1,5 @@
 settings/ ------------- for sequential setting
         |
-        + bulkload/ --- for wild card *.vim load
+        + preloads/ --- for wild card *.vim load at presettings to Bundle.
+        |
+        + postloads/ --- for wild card *.vim load at postsettings to Bundle.

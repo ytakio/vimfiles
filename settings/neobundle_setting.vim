@@ -1,5 +1,3 @@
-set nocompatible               " Be iMproved
-
 if has('vim_starting')
 	set rtp+=$HOME/vimfiles/neobundle/
 endif

@@ -33,16 +33,14 @@ if 1 && (!exists('g:no_vimrc_example') || g:no_vimrc_example == 0)
 endif
 
 "---------------------------------------------------------------------------
-" 設定スクリプトの読み込み
-source $HOME/vimfiles/settings/preset.vim
-" 読み込み順は保証されない
-for dot_vim in split(glob($HOME.'/vimfiles/settings/bulkload/*.vim'), '\n')
+" 前設定(読み込み順は保証されない)
+for dot_vim in split(glob($HOME.'/vimfiles/settings/preloads/**/*.vim'), '\n')
+  execute 'source' dot_vim
+endfor
+" plugin manager
+source $HOME/vimfiles/settings/neobundle_setting.vim
+" 後設定(読み込み順は保証されない)
+for dot_vim in split(glob($HOME.'/vimfiles/settings/postloads/**/*.vim'), '\n')
   execute 'source' dot_vim
 endfor
 
-" plugin manager
-source $HOME/vimfiles/settings/neobundle_setting.vim
-" 環境設定が終わったのでカラースキム
-source $HOME/vimfiles/settings/color.vim
-" 最後に全キーマッピングを設定
-source $HOME/vimfiles/settings/keymaps.vim

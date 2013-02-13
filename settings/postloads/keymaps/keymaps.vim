@@ -10,6 +10,13 @@ nnoremap <Up> gk
 nnoremap s/ :%s//gc<left><left><left>
 
 "-------------------------------------------------------
+" For Unite
+" Open MRU
+nnoremap				[Unite]		<Nop>
+nmap					<Leader>u	[Unite]
+nnoremap	<silent> 	[Unite]r	:Unite file_mru<CR>
+
+"-------------------------------------------------------
 " For Tagbar
 " Open and close Tagbar
 nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
