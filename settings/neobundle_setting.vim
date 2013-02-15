@@ -24,6 +24,7 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
