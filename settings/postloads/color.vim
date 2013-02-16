@@ -5,7 +5,8 @@
 if has('unix') && !has('gui_running')
   let uname = system('uname')
   if uname =~? "linux"
-    set term=builtin_linux
+    "set term=builtin_linux
+    set term=xterm
   elseif uname =~? "freebsd"
     set term=builtin_cons25
   elseif uname =~? "Darwin"
