@@ -17,7 +17,9 @@ nnoremap s/ :%s//gc<left><left><left>
 " Open MRU
 nnoremap				[Unite]		<Nop>
 nmap					<Leader>u	[Unite]
-nnoremap	<silent> 	[Unite]r	:Unite file_mru<CR>
+nnoremap	<silent> 	[Unite]f	:UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap	<silent> 	[Unite]r	:Unite -buffer-name=files file_mru<CR>
+nnoremap	<silent> 	[Unite]y	:Unite -buffer-name=register register<CR>
 
 "-------------------------------------------------------
 " For Tagbar
