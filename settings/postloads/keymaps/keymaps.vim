@@ -7,7 +7,9 @@ nnoremap <Up> gk
 
 "-------------------------------------------------------
 " For replace command
-nnoremap s/ :%s//gc<left><left><left>
+nnoremap <expr> s/ ':%s/' . expand('<cword>') . '//gc<left><left><left>'
+nnoremap <expr> S/ ':%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
+vnoremap s/ :s//gc<left><left><left>
 
 "-------------------------------------------------------
 " For Unite
@@ -25,5 +27,5 @@ nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 
 "-------------------------------------------------------
 " For NERDTree
-nnoremap <silent> <C-N> :execute 'NERDTree ' . getcwd()<CR>
+nnoremap <expr><silent> <C-N> ':NERDTree ' . getcwd() . '<CR>'
 
