@@ -4,9 +4,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
-nnoremap @ <Esc>
-nnoremap <C-@> @
-nnoremap <C-@><C-@> @@
 
 "-------------------------------------------------------
 " For replace command
