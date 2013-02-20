@@ -19,8 +19,10 @@ endif
 " プラットホーム依存の特別な設定
 
 " WinではPATHに$VIMが含まれていないときにexeを見つけ出せないので修正
-if has('win32') && $PATH !~? '\(^\|;\)' . escape($VIM, '\\') . '\(;\|$\)'
-  let $PATH = $VIM . ';' . $PATH
+if has('win32')
+  if $PATH !~? '\(^\|;\)' . escape($VIM, '\\') . '\(;\|$\)'
+    let $PATH = $VIM . ';' . $PATH
+  endif
   let $PATH = 'C:\Program Files (x86)\Git\bin' . ';' . $PATH
   let $PATH = 'D:\Program\ctags' . ';' . $PATH
   set iminsert=0
