@@ -28,7 +28,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'yuratomo/w3m.vim'
+NeoBundleLazy 'yuratomo/w3m.vim'
 NeoBundle 'tpope/vim-fugitive'
 
 " vim-scripts repos
