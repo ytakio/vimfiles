@@ -1,58 +1,5 @@
 " vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 "
-" An example for a Japanese version gvimrc file.
-" 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
-"
-" Last Change: 09-Jan-2011.
-" Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
-"
-" 解説:
-" このファイルにはVimの起動時に必ず設定される、GUI関連の設定が書かれていま
-" す。編集時の挙動に関する設定はvimrcに書かかれています。
-"
-" 個人用設定は_gvimrcというファイルを作成しそこで行ないます。_gvimrcはこの
-" ファイルの後に読込まれるため、ここに書かれた内容を上書きして設定することが
-" 出来ます。_gvimrcは$HOMEまたは$VIMに置いておく必要があります。$HOMEは$VIM
-" よりも優先され、$HOMEでみつかった場合$VIMは読込まれません。
-"
-" 管理者向けに本設定ファイルを直接書き換えずに済ませることを目的として、サイ
-" トローカルな設定を別ファイルで行なえるように配慮してあります。Vim起動時に
-" サイトローカルな設定ファイル($VIM/gvimrc_local.vim)が存在するならば、本設
-" 定ファイルの主要部分が読み込まれる前に自動的に読み込みます。
-"
-" 読み込み後、変数g:gvimrc_local_finishが非0の値に設定されていた場合には本設
-" 定ファイルに書かれた内容は一切実行されません。デフォルト動作を全て差し替え
-" たい場合に利用して下さい。
-"
-" 参考:
-"   :help gvimrc
-"   :echo $HOME
-"   :echo $VIM
-"   :version
-
-"---------------------------------------------------------------------------
-" サイトローカルな設定($VIM/gvimrc_local.vim)があれば読み込む。読み込んだ後
-" に変数g:gvimrc_local_finishに非0な値が設定されていた場合には、それ以上の設
-" 定ファイルの読込を中止する。
-if 1 && filereadable($VIM . '/gvimrc_local.vim')
-  source $VIM/gvimrc_local.vim
-  if exists('g:gvimrc_local_finish') && g:gvimrc_local_finish != 0
-    finish
-  endif
-endif
-
-"---------------------------------------------------------------------------
-" ユーザ優先設定($HOME/.gvimrc_first.vim)があれば読み込む。読み込んだ後に変
-" 数g:gvimrc_first_finishに非0な値が設定されていた場合には、それ以上の設定
-" ファイルの読込を中止する。
-if 0 && exists('$HOME') && filereadable($HOME . '/.gvimrc_first.vim')
-  unlet! g:gvimrc_first_finish
-  source $HOME/.gvimrc_first.vim
-  if exists('g:gvimrc_first_finish') && g:gvimrc_first_finish != 0
-    finish
-  endif
-endif
-
 "---------------------------------------------------------------------------
 " Bram氏の提供する設定例をインクルード (別ファイル:vimrc_example.vim)。これ
 " 以前にg:no_gvimrc_exampleに非0な値を設定しておけばインクルードしない。
@@ -62,7 +9,7 @@ endif
 
 "---------------------------------------------------------------------------
 " カラー設定:
-colorscheme morning
+colorscheme molokai
 
 "---------------------------------------------------------------------------
 " フォント設定:
@@ -70,7 +17,6 @@ colorscheme morning
 if has('win32')
   " Windows用
   set guifont=MS_Gothic:h12:cSHIFTJIS
-  "set guifont=MS_Mincho:h12:cSHIFTJIS
   " 行間隔の設定
   set linespace=1
   " 一部のUCS文字の幅を自動計測して決める
@@ -168,8 +114,7 @@ endif
 " 印刷用フォント
 if has('printer')
   if has('win32')
-    set printfont=MS_Mincho:h12:cSHIFTJIS
-    "set printfont=MS_Gothic:h12:cSHIFTJIS
+    set printfont=MS_Gothic:h12:cSHIFTJIS
   endif
 endif
 
