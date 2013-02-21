@@ -9,14 +9,14 @@ endif
 
 "---------------------------------------------------------------------------
 " カラー設定:
-colorscheme molokai
+colorscheme evening
 
 "---------------------------------------------------------------------------
 " フォント設定:
 "
 if has('win32')
   " Windows用
-  set guifont=MS_Gothic:h12:cSHIFTJIS
+  set guifont=MS_Gothic:h10:cSHIFTJIS
   " 行間隔の設定
   set linespace=1
   " 一部のUCS文字の幅を自動計測して決める
@@ -34,13 +34,11 @@ endif
 " ウインドウに関する設定:
 "
 " ウインドウの幅
-set columns=80
+set columns=128
 " ウインドウの高さ
-set lines=25
+set lines=1000
 " コマンドラインの高さ(GUI使用時)
 set cmdheight=2
-" 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
-"colorscheme evening " (GUI使用時)
 
 "---------------------------------------------------------------------------
 " 日本語入力に関する設定:

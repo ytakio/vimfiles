@@ -31,11 +31,3 @@ highlight JpSpace cterm=underline
 au BufRead,BufNew * match JpSpace /　/
 " コメント
 highlight Comment ctermfg=68
-" カーソル
-highlight CursorLine ctermbg=236
-highlight CursorColumn ctermbg=236
-
-"---------------------------------------------------------------------------
-" cursor line
-set cursorline
-set cursorcolumn
