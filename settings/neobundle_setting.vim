@@ -30,6 +30,9 @@ NeoBundle 'chrisbra/csv.vim'
 NeoBundle 'thinca/vim-ref'
 NeoBundleLazy 'yuratomo/w3m.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+NeoBundle 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
