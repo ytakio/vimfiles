@@ -19,9 +19,14 @@ if has('unix') && !has('gui_running')
 endif
 
 "---------------------------------------------------------------------------
+" 基本設定
+syntax enable
+set bg=dark
+
+"---------------------------------------------------------------------------
 " colorscheme を設定する
-let g:molokai_original=1
-colorscheme molokai
+let g:solarized_termcolors=256
+colorscheme solarized
 
 "---------------------------------------------------------------------------
 " 見にくいハイライトを上書き
@@ -29,5 +34,4 @@ colorscheme molokai
 " 全角スペース
 highlight JpSpace cterm=underline
 au BufRead,BufNew * match JpSpace /　/
-" コメント
-highlight Comment ctermfg=68
+
