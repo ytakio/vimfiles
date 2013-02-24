@@ -11,27 +11,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
 NeoBundle 'Shougo/vimproc'
 
+"---------------------------------------------------------------------------
 " My Bundles here:
 "
 " Note: You don't set neobundle setting in .gvimrc!
 " Original repos on github
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'thinca/vim-ref'
-NeoBundleLazy 'yuratomo/w3m.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'ujihisa/unite-font'
-NeoBundle 'altercation/vim-colors-solarized'
 
 " vim-scripts repos
 " ie. Bundle 'scriptname'
@@ -44,7 +28,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 
 "---------------------------------------------------------------------------
 " setting each plugin
-for plugin in split(glob($HOME.'/vimfiles/settings/plugin/**/*.vim'), '\n')
+for plugin in split(glob($HOME.'/vimfiles/settings/plugins/**/*.vim'), '\n')
   execute 'source' plugin
 endfor
 
