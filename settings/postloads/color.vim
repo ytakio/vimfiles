@@ -26,6 +26,9 @@ set bg=dark
 "---------------------------------------------------------------------------
 " colorscheme を設定する
 let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_italic=0
+let g:solarized_visibility="hight"
 colorscheme solarized
 
 "---------------------------------------------------------------------------
