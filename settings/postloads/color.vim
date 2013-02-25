@@ -28,7 +28,7 @@ set bg=dark
 let g:solarized_termcolors=256
 let g:solarized_contrast="high"
 let g:solarized_italic=0
-let g:solarized_visibility="hight"
+let g:solarized_visibility="high"
 colorscheme solarized
 
 "---------------------------------------------------------------------------
