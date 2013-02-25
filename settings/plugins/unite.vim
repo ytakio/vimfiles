@@ -9,5 +9,5 @@ nnoremap				[Unite]		<Nop>
 nmap					<Leader>u	[Unite]
 nnoremap	<silent> 	[Unite]f	:UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap	<silent> 	[Unite]r	:Unite -buffer-name=files file_mru<CR>
-nnoremap	<silent> 	[Unite]y	:Unite -buffer-name=register register<CR>
+nnoremap	<silent> 	[Unite]R	:Unite -buffer-name=register register<CR>
 
