@@ -1,1 +1,0 @@
-NeoBundle 'kana/vim-tabpagecd'
