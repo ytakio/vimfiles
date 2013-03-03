@@ -1,11 +1,14 @@
 if has('vim_starting')
-	set rtp+=$HOME/vimfiles/neobundle/
+	if !isdirectory($HOME . '/.vim/bundle/neobundle.vim')
+		!~/vimfiles/init.sh
+	endif
+	set rtp+=~/.vim/bundle/neobundle.vim
 endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : 'ver.2.1' }
 
 " Recommended to install
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
