@@ -7,4 +7,5 @@
 set noignorecase
 " 大文字小文字の両方が含まれている場合は大文字小文字を区別
 set smartcase
-
+" for tags
+set tags=./tags;
