@@ -1,6 +1,9 @@
 if has('vim_starting')
 	if !isdirectory($HOME . '/.vim/bundle/neobundle.vim')
-		!~/vimfiles/init.sh
+		if has('win32')
+		else
+			!~/vimfiles/init.sh
+		endif
 	endif
 	set rtp+=~/.vim/bundle/neobundle.vim
 endif
