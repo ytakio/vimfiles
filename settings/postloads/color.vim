@@ -39,3 +39,8 @@ colorscheme solarized
 highlight JpSpace cterm=underline
 au BufRead,BufNew * match JpSpace /　/
 
+"---------------------------------------------------------------------------
+" For Doxygen
+"---------------------------------------------------------------------------
+let g:load_doxygen_syntax=1
+
