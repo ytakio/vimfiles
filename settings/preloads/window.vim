@@ -21,6 +21,8 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
+" fold
+set foldmethod=marker
 
 "---------------------------------------------------------------------------
 "ステータスラインに文字コードやBOM、16進表示等表示
