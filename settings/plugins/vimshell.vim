@@ -1,1 +1,1 @@
-NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell.vim'
