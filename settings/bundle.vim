@@ -5,13 +5,16 @@ if has('vim_starting')
 			!~/vimfiles/init.sh
 		endif
 	endif
+	set nocompatible	" Be iMproved
+	" Required:
 	set rtp+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : 'ver.2.1' }
+"NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : 'ver.2.1' }
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Recommended to install
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
@@ -45,21 +48,13 @@ for plugin in split(glob($HOME.'/vimfiles/settings/plugins/**/*.vim'), '\n')
   execute 'source' plugin
 endfor
 
-" ...
+" Required:
+call neobundle#end()
 
-filetype plugin indent on     " Required!
+" Required:
+filetype plugin indent on
 "
-" Brief help
-" :NeoBundleList          - list configured bundles
-" :NeoBundleInstall(!)    - install(update) bundles
-" :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
-" Installation check.
-"NeoBundleCheck
-if neobundle#exists_not_installed_bundles()
-	echomsg 'Not installed bundles : ' .
-				\ string(neobundle#get_not_installed_bundle_names())
-	echomsg 'Please execute ":NeoBundleInstall" command.'
-	"finish
-endif
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
