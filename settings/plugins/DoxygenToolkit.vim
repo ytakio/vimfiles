@@ -1,1 +1,1 @@
-NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+NeoBundle 'takio-c/DoxygenToolkit.vim'
