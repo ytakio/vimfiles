@@ -22,6 +22,7 @@ endif
 " 基本設定
 syntax enable
 set bg=dark
+set cursorline
 
 "---------------------------------------------------------------------------
 " colorscheme を設定する
@@ -30,6 +31,7 @@ let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_italic=0
 let g:solarized_visibility="normal"
+let g:solarized_hitrail=1
 colorscheme solarized
 
 "---------------------------------------------------------------------------

@@ -28,3 +28,6 @@ set formatoptions+=mM
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
 set nobackup
 
+" undoファイルを作成する
+set undofile
+
