@@ -74,10 +74,10 @@ endif
 if !(has('win32') || has('mac')) && has('multi_lang')
   if !exists('$LANG') || $LANG.'X' ==# 'X'
     if !exists('$LC_CTYPE') || $LC_CTYPE.'X' ==# 'X'
-      language ctype ja_JP.eucJP
+      language ctype ja_JP.UTF-8
     endif
     if !exists('$LC_MESSAGES') || $LC_MESSAGES.'X' ==# 'X'
-      language messages ja_JP.eucJP
+      language messages ja_JP.UTF-8
     endif
   endif
 endif
