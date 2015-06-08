@@ -10,4 +10,4 @@ set smartcase
 " for tags
 set tags=./tags;
 " for ignoring white spaces
-set diffopt=iwhite
+set diffopt=iwhite,vertical

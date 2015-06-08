@@ -23,8 +23,6 @@ set showcmd
 set title
 " fold
 set foldmethod=marker
-" vimdiff
-set diffopt+=vertical
 
 "---------------------------------------------------------------------------
 "ステータスラインに文字コードやBOM、16進表示等表示
