@@ -36,13 +36,8 @@ endif
 
 "---------------------------------------------------------------------------
 " 前設定(読み込み順は保証されない)
-for dot_vim in split(glob($HOME.'/vimfiles/settings/preloads/**/*.vim'), '\n')
-  execute 'source' dot_vim
-endfor
+runtime! settings/preloads/*.vim
 " plugin manager
 source $HOME/vimfiles/settings/bundle.vim
 " 後設定(読み込み順は保証されない)
-for dot_vim in split(glob($HOME.'/vimfiles/settings/postloads/**/*.vim'), '\n')
-  execute 'source' dot_vim
-endfor
-
+runtime! settings/postloads/*.vim
