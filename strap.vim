@@ -36,8 +36,8 @@ endif
 
 "---------------------------------------------------------------------------
 " 前設定(読み込み順は保証されない)
-runtime! settings/preloads/*.vim
+runtime! settings/preloads/**/*.vim
 " plugin manager
 source $HOME/vimfiles/settings/bundle.vim
 " 後設定(読み込み順は保証されない)
-runtime! settings/postloads/*.vim
+runtime! settings/postloads/**/*.vim
