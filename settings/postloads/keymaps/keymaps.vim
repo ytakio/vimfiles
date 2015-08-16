@@ -1,3 +1,5 @@
+" Don't use Ex mode, use Q for formatting
+map Q gq
 "-------------------------------------------------------
 " カーソルを表示行で移動
 nnoremap j gj
