@@ -35,3 +35,7 @@ if has('mac')
   set iskeyword=@,48-57,_,128-167,224-235
 endif
 
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
