@@ -423,6 +423,15 @@ endfunction
 " W3m"{{{
 NeoBundle 'yuratomo/w3m.vim'
 "}}}
+" Vim Markdown"{{{
+NeoBundle 'plasticboy/vim-markdown'
+"}}}
+" Previm"{{{
+NeoBundle 'kannokanno/previm'
+"}}}
+" Open Browser"{{{
+NeoBundle 'tyru/open-browser.vim'
+"}}}
 
 " End loading
 call neobundle#end()
@@ -477,6 +486,13 @@ au BufRead,BufNew * match JpSpace /　/
 " For Doxygen
 "---------------------------------------------------------------------------
 let g:load_doxygen_syntax=1
+"}}}
+
+" Filetype"{{{
+aug VimrcFT
+	au BufRead,BufNewFile *.mkd set filetype=markdown
+	au FileType vim set commentstring=\"%s
+aug END
 "}}}
 
 " Functions"{{{
