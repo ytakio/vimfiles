@@ -1,5 +1,3 @@
-" vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
-
 " Platform"{{{
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -157,6 +155,14 @@ call neobundle#begin(expand('~/.vim/bundle'))
 "NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : 'ver.2.1' }
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+"-------------------------------------------------------
+" Keymap
+" Open MRU
+nnoremap	[Bundle]		<Nop>
+nmap			<Leader>b			[Bundle]
+nnoremap	<silent>			[Bundle]u	:<C-u>NeoBundleUpdate<CR>
+nnoremap	<silent>			[Bundle]c	:<C-u>NeoBundleClean<CR>
+
 " Recommended to install
 " VimProc"{{{
 " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
@@ -169,12 +175,10 @@ NeoBundle 'Shougo/vimproc' , {
 	\	},
 	\ }
 "}}}
-
 " VimShell"{{{
 NeoBundle 'Shougo/vimshell.vim'
 "}}}
 "}}}
-
 " Unite"{{{
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -193,11 +197,9 @@ nnoremap	<silent> 	[Unite]f	:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap	<silent> 	[Unite]r	:<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap	<silent> 	[Unite]R	:<C-u>Unite -buffer-name=register register<CR>
 "}}}
-
 " NeoMRU"{{{
 NeoBundle 'Shougo/neomru.vim'
 "}}}
-
 " NeoComplcache"{{{
 NeoBundle 'Shougo/neocomplcache.vim'
 
@@ -291,7 +293,6 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 " https://github.com/c9s/perlomni.vim
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "}}}
-
 " NeoSnippet"{{{
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -314,7 +315,6 @@ if has('conceal')
 	set conceallevel=2 concealcursor=i
 endif
 "}}}
-
 " VimFiler"{{{
 NeoBundle 'Shougo/vimfiler.vim'
 
@@ -330,11 +330,9 @@ nnoremap	<silent>	[VimFiler]e	:VimFilerBufferDir<CR>
 nnoremap	<silent>	[VimFiler]v	:VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
 nmap		<silent>	<C-N>		[VimFiler]v
 "}}}
-
 " Solarized"{{{
 NeoBundle 'altercation/vim-colors-solarized'
 "}}}
-
 " Tagbar"{{{
 NeoBundle 'majutsushi/tagbar'
 "-------------------------------------------------------
@@ -342,11 +340,9 @@ NeoBundle 'majutsushi/tagbar'
 " Open and close Tagbar
 nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
 "}}}
-
 " Doxygentoolkit"{{{
 NeoBundle 'takio-c/DoxygenToolkit.vim'
 "}}}
-
 " Gtags"{{{
 NeoBundle 'gtags.vim'
 " let g:Gtags_Result = "ctags"
@@ -358,11 +354,9 @@ NeoBundle 'gtags.vim'
 " nmap <F8> :Gozilla<CR>
 " nmap <C-\><C-]> :GtagsCursor<CR>
 "}}}
-
 " Vim Fugitive"{{{
 NeoBundle 'tpope/vim-fugitive'
 "}}}
-
 " Lightline"{{{
 NeoBundle 'itchyny/lightline.vim'
 let g:lightline = {
@@ -425,6 +419,9 @@ endfunction
 function! LightLineMode()
 	return winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
+"}}}
+" W3m"{{{
+NeoBundle 'yuratomo/w3m.vim'
 "}}}
 
 " End loading
@@ -500,7 +497,6 @@ endfunction
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "}}}
-
 " Auto numbering"{{{
 nnoremap <silent> co :ContinuousNumber <C-a><CR>
 vnoremap <silent> co :ContinuousNumber <C-a><CR>
@@ -527,3 +523,5 @@ nnoremap <expr> s/ ':%s/' . expand('<cword>') . '//gc<left><left><left>'
 nnoremap <expr> S/ ':%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
 vnoremap s/ :s//gc<left><left><left>
 "}}}
+
+" vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
