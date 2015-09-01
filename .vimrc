@@ -12,130 +12,15 @@ set clipboard^=unnamedplus
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
-"}}}
 
-" User interface"{{{
-	" 行番号を非表示 (number:表示)
-	set number
-	" ルーラーを表示 (noruler:非表示)
-	set ruler
-	" タブや改行を表示 (list:表示)
-	set list
-	" どの文字でタブや改行を表示するかを設定
-	set listchars=tab:^\ ,trail:$
-	" 長い行を折り返して表示 (nowrap:折り返さない)
-	set wrap
-	" 常にステータス行を表示 (詳細は:he laststatus)
-	set laststatus=2
-	" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
-	set cmdheight=2
-	" コマンドをステータス行に表示
-	set showcmd
-	" タイトルを表示
-	set title
-	" fold
-	set foldmethod=marker
-	" status line
-	if has('iconv')
-		set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=[0x%{FencB()}]\ (%v,%l)/%L%8P\ 
-	else
-		set statusline=%<%f\ %m\ %r%h%w%{'['.(&fenc!=''?&fenc:&enc).(&bomb?':BOM':'').']['.&ff.']'}%=\ (%v,%l)/%L%8P\ 
+" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
+if has('unix') && !has('gui_running')
+	if system('uname') =~? "linux"
+		"set term=builtin_linux
+		"set term=xterm
 	endif
-
-	function! FencB()
-		let c = matchstr(getline('.'), '.', col('.') - 1)
-		let c = iconv(c, &enc, &fenc)
-		return s:Byte2hex(s:Str2byte(c))
-	endfunction
-
-	function! s:Str2byte(str)
-		return map(range(len(a:str)), 'char2nr(a:str[v:val])')
-	endfunction
-
-	function! s:Byte2hex(bytes)
-		return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
-	endfunction
-"}}}
-
-" Editing"{{{
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-	" Enable file type detection.
-	" Use the default filetype settings, so that mail gets 'tw' set to 72,
-	" 'cindent' is on in C files, etc.
-	" Also load indent files, to automatically do language-dependent indenting.
-	filetype plugin indent on
-
-	" Put these in an autocmd group, so that we can delete them easily.
-	aug vimrc
-		au!
-		" For all text files set 'textwidth' to 78 characters.
-		au FileType text setlocal textwidth=78
-		" When editing a file, always jump to the last known cursor position.
-		" Don't do it when the position is invalid or when inside an event handler
-		" (happens when dropping a file on gvim).
-		" Also don't do it when the mark is in the first line, that is the default
-		" position when opening a file.
-		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-	aug END
-else
-	set autoindent		" always set autoindenting on
-endif " has("autocmd")
-
-"---------------------------------------------------------------------------
-" 編集に関する設定:
-"
-" タブの画面上での幅
-set tabstop=4
-" 自動インデント
-set shiftwidth=4
-" タブをスペースに展開しない (expandtab:展開する)
-set noexpandtab
-" 自動的にインデントする (noautoindent:インデントしない)
-set autoindent
-" バックスペースでインデントや改行を削除できるようにする
-set backspace=2
-" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
-set nowrapscan
-" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
-set showmatch
-" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
-set wildmenu
-" テキスト挿入中の自動折り返しを日本語に対応させる
-set formatoptions+=mM
-
-"---------------------------------------------------------------------------
-" ファイル操作に関する設定:
-"
-" バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
-set nobackup
-
-" undoファイルを作成する
-set undofile
-"}}}
-
-" Searching"{{{
-"---------------------------------------------------------------------------
-" 検索の挙動に関する設定:
-"
-" do incremental searching
-set incsearch
-" set hilight
-set hlsearch
-" 検索時に大文字小文字を無視 (noignorecase:無視しない)
-set noignorecase
-" 大文字小文字の両方が含まれている場合は大文字小文字を区別
-set smartcase
-" for tags
-set tags=./tags;
-" for ignoring white spaces
-set diffopt=iwhite,vertical
-"}}}
-
-" Language and Encoding"{{{
-set encoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
-set fileformats=unix,dos,mac
+	set t_Co=256
+endif
 "}}}
 
 " Plugin"{{{
@@ -332,6 +217,13 @@ nmap		<silent>	<C-N>		[VimFiler]v
 "}}}
 " Solarized"{{{
 NeoBundle 'altercation/vim-colors-solarized'
+" settings
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
+let g:solarized_contrast="high"
+let g:solarized_italic=0
+let g:solarized_visibility="normal"
+let g:solarized_hitrail=1
 "}}}
 " Tagbar"{{{
 NeoBundle 'majutsushi/tagbar'
@@ -440,25 +332,125 @@ call neobundle#end()
 NeoBundleCheck
 "}}}
 
-" Color"{{{
+" Searching"{{{
 "---------------------------------------------------------------------------
-" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
-if has('unix') && !has('gui_running')
-  let uname = system('uname')
-  if uname =~? "linux"
-    "set term=builtin_linux
-    set term=xterm
-  elseif uname =~? "freebsd"
-    set term=builtin_cons25
-  elseif uname =~? "Darwin"
-    set term=beos-ansi
-  else
-    set term=builtin_xterm
-  endif
-  unlet uname
-  set t_Co=256
-endif
+" 検索の挙動に関する設定:
+"
+" do incremental searching
+set incsearch
+" set hilight
+set hlsearch
+" 検索時に大文字小文字を無視 (noignorecase:無視しない)
+set noignorecase
+" 大文字小文字の両方が含まれている場合は大文字小文字を区別
+set smartcase
+" for tags
+set tags=./tags;
+" for ignoring white spaces
+set diffopt=iwhite,vertical
+"}}}
 
+" Language and Encoding"{{{
+set encoding=utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileformats=unix,dos,mac
+"}}}
+
+" User interface"{{{
+	" 行番号を非表示 (number:表示)
+	set number
+	" ルーラーを表示 (noruler:非表示)
+	set ruler
+	" タブや改行を表示 (list:表示)
+	set list
+	" どの文字でタブや改行を表示するかを設定
+	set listchars=tab:^\ ,trail:$
+	" 長い行を折り返して表示 (nowrap:折り返さない)
+	set wrap
+	" 常にステータス行を表示 (詳細は:he laststatus)
+	set laststatus=2
+	" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
+	set cmdheight=2
+	" コマンドをステータス行に表示
+	set showcmd
+	" タイトルを表示
+	set title
+	" fold
+	set foldmethod=marker
+
+	function! FencB()
+		let c = matchstr(getline('.'), '.', col('.') - 1)
+		let c = iconv(c, &enc, &fenc)
+		return s:Byte2hex(s:Str2byte(c))
+	endfunction
+
+	function! s:Str2byte(str)
+		return map(range(len(a:str)), 'char2nr(a:str[v:val])')
+	endfunction
+
+	function! s:Byte2hex(bytes)
+		return join(map(copy(a:bytes), 'printf("%02X", v:val)'), '')
+	endfunction
+"}}}
+
+" Editing"{{{
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+	" Enable file type detection.
+	" Use the default filetype settings, so that mail gets 'tw' set to 72,
+	" 'cindent' is on in C files, etc.
+	" Also load indent files, to automatically do language-dependent indenting.
+	filetype plugin indent on
+
+	" Put these in an autocmd group, so that we can delete them easily.
+	aug vimrc
+		au!
+		" For all text files set 'textwidth' to 78 characters.
+		au FileType text setlocal textwidth=78
+		" When editing a file, always jump to the last known cursor position.
+		" Don't do it when the position is invalid or when inside an event handler
+		" (happens when dropping a file on gvim).
+		" Also don't do it when the mark is in the first line, that is the default
+		" position when opening a file.
+		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+	aug END
+else
+	set autoindent		" always set autoindenting on
+endif " has("autocmd")
+
+"---------------------------------------------------------------------------
+" 編集に関する設定:
+"
+" タブの画面上での幅
+set tabstop=4
+" 自動インデント
+set shiftwidth=4
+" タブをスペースに展開しない (expandtab:展開する)
+set noexpandtab
+" 自動的にインデントする (noautoindent:インデントしない)
+set autoindent
+" バックスペースでインデントや改行を削除できるようにする
+set backspace=2
+" 検索時にファイルの最後まで行ったら最初に戻る (nowrapscan:戻らない)
+set nowrapscan
+" 括弧入力時に対応する括弧を表示 (noshowmatch:表示しない)
+set showmatch
+" コマンドライン補完するときに強化されたものを使う(参照 :help wildmenu)
+set wildmenu
+" テキスト挿入中の自動折り返しを日本語に対応させる
+set formatoptions+=mM
+
+"---------------------------------------------------------------------------
+" ファイル操作に関する設定:
+"
+" バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
+set nobackup
+
+" undoファイルを作成する
+set undofile
+"}}}
+
+" Color"{{{
 "---------------------------------------------------------------------------
 " 基本設定
 syntax enable
@@ -467,12 +459,6 @@ set cursorline
 
 "---------------------------------------------------------------------------
 " colorscheme を設定する
-let g:solarized_termcolors=16
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_italic=0
-let g:solarized_visibility="normal"
-let g:solarized_hitrail=1
 colorscheme solarized
 
 "---------------------------------------------------------------------------
