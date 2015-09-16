@@ -317,6 +317,7 @@ NeoBundle 'yuratomo/w3m.vim'
 "}}}
 " Vim Markdown"{{{
 NeoBundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled=1
 "}}}
 " Previm"{{{
 NeoBundle 'kannokanno/previm'
