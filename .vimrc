@@ -477,7 +477,8 @@ let g:load_doxygen_syntax=1
 
 " Filetype"{{{
 aug VimrcFT
-	au BufRead,BufNewFile *.mkd set filetype=markdown
+	au BufRead,BufNewFile *.md set filetype=mkd.markdown
+	au FileType mkd.markdown set softtabstop=4 expandtab
 	au FileType vim set commentstring=\"%s
 aug END
 "}}}
