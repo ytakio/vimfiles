@@ -402,19 +402,6 @@ if has("autocmd")
 	" 'cindent' is on in C files, etc.
 	" Also load indent files, to automatically do language-dependent indenting.
 	filetype plugin indent on
-
-	" Put these in an autocmd group, so that we can delete them easily.
-	aug vimrc
-		au!
-		" For all text files set 'textwidth' to 78 characters.
-		au FileType text setlocal textwidth=78
-		" When editing a file, always jump to the last known cursor position.
-		" Don't do it when the position is invalid or when inside an event handler
-		" (happens when dropping a file on gvim).
-		" Also don't do it when the mark is in the first line, that is the default
-		" position when opening a file.
-		au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-	aug END
 else
 	set autoindent		" always set autoindenting on
 endif " has("autocmd")
@@ -476,8 +463,22 @@ let g:load_doxygen_syntax=1
 "}}}
 
 " Filetype"{{{
-aug VimrcFT
-	au BufRead,BufNewFile *.md set filetype=mkd.markdown
+" Put these in an autocmd group, so that we can delete them easily.
+aug vimrc.all
+	au!
+	" For all text files set 'textwidth' to 78 characters.
+	au FileType text setlocal textwidth=78
+	" When editing a file, always jump to the last known cursor position.
+	" Don't do it when the position is invalid or when inside an event handler
+	" (happens when dropping a file on gvim).
+	" Also don't do it when the mark is in the first line, that is the default
+	" position when opening a file.
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+aug END
+" For markdown format
+aug vimrc.markdown
+	au!
+	au BufRead,BufNewFile *.md set filetype=md.markdown
 	au FileType mkd.markdown set softtabstop=4 expandtab
 	au FileType vim set commentstring=\"%s
 aug END
