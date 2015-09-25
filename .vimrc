@@ -464,6 +464,7 @@ let g:load_doxygen_syntax=1
 
 " Filetype"{{{
 " Put these in an autocmd group, so that we can delete them easily.
+" For all type"{{{
 aug vimrc.all
 	au!
 	" For all text files set 'textwidth' to 78 characters.
@@ -475,13 +476,26 @@ aug vimrc.all
 	" position when opening a file.
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 aug END
-" For markdown format
+"}}}
+" For vim scripts"{{{
+aug vimrc.vim
+	au!
+	au FileType vim set commentstring=\"%s
+aug END
+"}}}
+" For makefile"{{{
+aug vimrc.make
+	au!
+	au FileType make set tabstop=8 softtabstop=0 noexpandtab
+aug END
+"}}}
+" For markdown format"{{{
 aug vimrc.markdown
 	au!
 	au BufRead,BufNewFile *.md set filetype=md.markdown
 	au FileType mkd.markdown set softtabstop=4 expandtab
-	au FileType vim set commentstring=\"%s
 aug END
+"}}}
 "}}}
 
 " Functions"{{{
