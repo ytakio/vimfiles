@@ -313,7 +313,9 @@ function! LightLineMode()
 endfunction
 "}}}
 " W3m"{{{
-NeoBundle 'yuratomo/w3m.vim'
+if executable('w3m')
+	NeoBundle 'yuratomo/w3m.vim'
+endif
 "}}}
 " Vim Markdown"{{{
 NeoBundle 'plasticboy/vim-markdown'
