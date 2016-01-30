@@ -1,12 +1,13 @@
 #!/bin/sh -x
 git clone git://github.com/yascentur/Ricty.git
 cd Ricty
-wget http://levien.com/type/myfonts/Inconsolata.otf
+wget --content-disposition https://github.com/google/fonts/blob/master/ofl/inconsolata/Inconsolata-Bold.ttf?raw=true
+wget --content-disposition https://github.com/google/fonts/blob/master/ofl/inconsolata/Inconsolata-Regular.ttf?raw=true
 wget http://iij.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-1m-20130617.zip
 unzip migu-1m-20130617.zip
 mv migu-1m-20130617/* ./
 
-./ricty_generator.sh Inconsolata.otf migu-1m-regular.ttf migu-1m-bold.ttf
+./ricty_generator.sh auto
 
 mkdir -p /usr/share/fonts/truetype/ricty
 mv Ricty*.ttf /usr/share/fonts/truetype/ricty/
