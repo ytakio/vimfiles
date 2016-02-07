@@ -317,6 +317,9 @@ if executable('w3m')
 	NeoBundle 'yuratomo/w3m.vim'
 endif
 "}}}
+" Tabular"{{{
+NeoBundle 'godlygeek/tabular'
+"}}}
 " Vim Markdown"{{{
 NeoBundle 'plasticboy/vim-markdown'
 let g:vim_markdown_folding_disabled=1
@@ -482,20 +485,20 @@ aug END
 " For vim scripts"{{{
 aug vimrc.vim
 	au!
-	au FileType vim set commentstring=\"%s
+	au FileType vim setlocal commentstring=\"%s
 aug END
 "}}}
 " For makefile"{{{
 aug vimrc.make
 	au!
-	au FileType make set tabstop=8 softtabstop=0 noexpandtab
+	au FileType make setlocal tabstop=8 softtabstop=0 noexpandtab
 aug END
 "}}}
 " For markdown format"{{{
 aug vimrc.markdown
 	au!
-	au BufRead,BufNewFile *.md set filetype=md.markdown
-	au FileType mkd.markdown set softtabstop=4 expandtab
+	au BufRead,BufNewFile *.md setfiletype markdown
+	au FileType markdown setlocal softtabstop=4 expandtab cocu=
 aug END
 "}}}
 "}}}
