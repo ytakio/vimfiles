@@ -559,8 +559,8 @@ nnoremap <Up> gk
 
 "-------------------------------------------------------
 " For editing
-nnoremap x			"-x
-nnoremap <C-H>	"-X
+nnoremap x "-x
+nnoremap <C-H> "-X
 
 "-------------------------------------------------------
 " For replace command
