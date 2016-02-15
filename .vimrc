@@ -559,10 +559,12 @@ nnoremap <Up> gk
 
 "-------------------------------------------------------
 " For editing
-nnoremap <C-H> "_X
-nnoremap d "_d
-nnoremap s d
-vnoremap d "_d
+nnoremap x			"-x
+nnoremap <C-H>	"-X
+nnoremap s			"-d
+nnoremap ss			"-dd
+nnoremap S			"-D
+
 vnoremap s d
 
 "-------------------------------------------------------
