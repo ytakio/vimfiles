@@ -330,6 +330,10 @@ NeoBundle 'kannokanno/previm'
 " Open Browser"{{{
 NeoBundle 'tyru/open-browser.vim'
 "}}}
+" Calendar"{{{
+NeoBundle 'itchyny/calendar.vim'
+let g:calendar_google_calendar = 1
+"}}}
 
 " End loading
 call neobundle#end()
