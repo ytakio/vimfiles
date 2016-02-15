@@ -536,6 +536,10 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 "-------------------------------------------------------
+" Help
+cabbrev h vertical botright h
+
+"-------------------------------------------------------
 " カーソルを表示行で移動
 nnoremap j gj
 nnoremap k gk
