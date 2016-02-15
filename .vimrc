@@ -211,8 +211,8 @@ let g:vimfiler_safe_mode_by_default = 0
 " Keymap
 nnoremap				[VimFiler]		<Nop>
 nmap					<Leader>f	[VimFiler]
-nnoremap	<silent>	[VimFiler]e	:VimFilerBufferDir<CR>
-nnoremap	<silent>	[VimFiler]v	:VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
+nnoremap	<silent>	[VimFiler]e	:<C-u>VimFilerBufferDir<CR>
+nnoremap	<silent>	[VimFiler]v	:<C-u>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
 nmap		<silent>	<C-N>		[VimFiler]v
 "}}}
 " Solarized"{{{
@@ -230,7 +230,7 @@ NeoBundle 'majutsushi/tagbar'
 "-------------------------------------------------------
 " Keymap
 " Open and close Tagbar
-nnoremap <silent> <Leader>t :TagbarOpenAutoClose<CR>
+nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
 "}}}
 " Doxygentoolkit"{{{
 NeoBundle 'takio-c/DoxygenToolkit.vim'
@@ -238,13 +238,13 @@ NeoBundle 'takio-c/DoxygenToolkit.vim'
 " Gtags"{{{
 NeoBundle 'gtags.vim'
 " let g:Gtags_Result = "ctags"
-" nmap <F2> :copen<CR>
-" nmap <F4> :cclose<CR>
-" nmap <F5> :Gtags<SPACE>
-" nmap <F6> :Gtags -f %<CR>
-" nmap <F7> :GtagsCursor<CR>
-" nmap <F8> :Gozilla<CR>
-" nmap <C-\><C-]> :GtagsCursor<CR>
+" nmap <F2> :<C-u>copen<CR>
+" nmap <F4> :<C-u>cclose<CR>
+" nmap <F5> :<C-u>Gtags<SPACE>
+" nmap <F6> :<C-u>Gtags -f %<CR>
+" nmap <F7> :<C-u>GtagsCursor<CR>
+" nmap <F8> :<C-u>Gozilla<CR>
+" nmap <C-\><C-]> :<C-u>GtagsCursor<CR>
 "}}}
 " Vim Fugitive"{{{
 NeoBundle 'tpope/vim-fugitive'
@@ -344,7 +344,7 @@ NeoBundleCheck
 
 " Searching"{{{
 "---------------------------------------------------------------------------
-" 検索の挙動に関する設定:
+" 検索の挙動に関する設定
 "
 " do incremental searching
 set incsearch
@@ -503,7 +503,7 @@ aug vimrc.markdown
 	au!
 	au BufRead,BufNewFile *.md setfiletype markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
-	au FileType markdown nnoremap <buffer><silent> <Leader>t :Toc<CR>
+	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-u>Toc<CR>
 aug END
 "}}}
 "}}}
@@ -527,8 +527,8 @@ endfunction
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "}}}
 " Auto numbering"{{{
-nnoremap <silent> co :ContinuousNumber <C-a><CR>
-vnoremap <silent> co :ContinuousNumber <C-a><CR>
+nnoremap <silent> co :<C-u>ContinuousNumber <C-a><CR>
+vnoremap <silent> co :<C-u>ContinuousNumber <C-a><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
 "}}}
@@ -560,9 +560,9 @@ vnoremap s d
 
 "-------------------------------------------------------
 " For replace command
-nnoremap <expr> s/ ':%s/' . expand('<cword>') . '//gc<left><left><left>'
-nnoremap <expr> S/ ':%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
-vnoremap s/ :s//gc<left><left><left>
+nnoremap <expr> s/ ':<C-u>%s/' . expand('<cword>') . '//gc<left><left><left>'
+nnoremap <expr> S/ ':<C-u>%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
+vnoremap s/ :<C-u>s//gc<left><left><left>
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
