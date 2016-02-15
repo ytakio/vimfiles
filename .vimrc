@@ -561,17 +561,12 @@ nnoremap <Up> gk
 " For editing
 nnoremap x			"-x
 nnoremap <C-H>	"-X
-nnoremap s			"-d
-nnoremap ss			"-dd
-nnoremap S			"-D
-
-vnoremap s d
 
 "-------------------------------------------------------
 " For replace command
-nnoremap <expr> s/ ':<C-U>%s/' . expand('<cword>') . '//gc<left><left><left>'
-nnoremap <expr> S/ ':<C-U>%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
-vnoremap s/ :<C-U>s//gc<left><left><left>
+nnoremap ss :<C-U>%s/<C-R><C-W>//gc<left><left><left>
+nnoremap sw :<C-U>%s/\<<C-R><C-W>\>//gc<left><left><left>
+vnoremap s :<C-U>s///gc<left><left><left>
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
