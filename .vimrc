@@ -507,7 +507,7 @@ aug END
 " For markdown format"{{{
 aug vimrc.markdown
 	au!
-	au BufRead,BufNewFile *.md setfiletype markdown
+	au BufRead,BufNewFile *.md set filetype=markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
 aug END
