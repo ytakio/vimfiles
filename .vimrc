@@ -1,4 +1,7 @@
 " Platform"{{{
+" For debug about setting process
+set verbose&
+"set verbose=1
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -8,7 +11,10 @@ set ttyfast
 
 " enable to share clipboard
 set clipboard&
-set clipboard^=unnamedplus
+set clipboard=unnamed
+"if has('unnamedplus')
+	set clipboard+=unnamedplus
+"endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=a
