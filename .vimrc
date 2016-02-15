@@ -51,8 +51,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Open MRU
 nnoremap	[Bundle]		<Nop>
 nmap			<Leader>b			[Bundle]
-nnoremap	<silent>			[Bundle]u	:<C-u>NeoBundleUpdate<CR>
-nnoremap	<silent>			[Bundle]c	:<C-u>NeoBundleClean<CR>
+nnoremap	<silent>			[Bundle]u	:<C-U>NeoBundleUpdate<CR>
+nnoremap	<silent>			[Bundle]c	:<C-U>NeoBundleClean<CR>
 
 " Recommended to install
 " VimProc"{{{
@@ -84,9 +84,9 @@ let g:unite_source_file_mru_filename_format = ''
 " Open MRU
 nnoremap				[Unite]		<Nop>
 nmap					<Leader>u	[Unite]
-nnoremap	<silent> 	[Unite]f	:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap	<silent> 	[Unite]r	:<C-u>Unite -buffer-name=files file_mru<CR>
-nnoremap	<silent> 	[Unite]R	:<C-u>Unite -buffer-name=register register<CR>
+nnoremap	<silent> 	[Unite]f	:<C-U>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap	<silent> 	[Unite]r	:<C-U>Unite -buffer-name=files file_mru<CR>
+nnoremap	<silent> 	[Unite]R	:<C-U>Unite -buffer-name=register register<CR>
 "}}}
 " NeoMRU"{{{
 NeoBundle 'Shougo/neomru.vim'
@@ -125,24 +125,24 @@ endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
+inoremap <expr><C-G>     neocomplcache#undo_completion()
+inoremap <expr><C-L>     neocomplcache#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+inoremap <silent> <CR> <C-R>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
 	return neocomplcache#smart_close_popup() . "\<CR>"
 	" For no inserting <CR> key.
 	"return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><TAB>  pumvisible() ? "\<C-N>" : "\<TAB>"
+" <C-H>, <BS>: close popup and delete backword char.
+inoremap <expr><C-H> neocomplcache#smart_close_popup()."\<C-H>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-H>"
+inoremap <expr><C-Y>  neocomplcache#close_popup()
+inoremap <expr><C-E>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 
@@ -163,7 +163,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 "set completeopt+=longest
 "let g:neocomplcache_enable_auto_select = 1
 "let g:neocomplcache_disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-X>\<C-U>"
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -189,14 +189,14 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-K>     <Plug>(neosnippet_expand_or_jump)
+smap <C-K>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-K>     <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 			\ "\<Plug>(neosnippet_expand_or_jump)"
-			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+			\: pumvisible() ? "\<C-N>" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 			\ "\<Plug>(neosnippet_expand_or_jump)"
 			\: "\<TAB>"
@@ -217,8 +217,8 @@ let g:vimfiler_safe_mode_by_default = 0
 " Keymap
 nnoremap				[VimFiler]		<Nop>
 nmap					<Leader>f	[VimFiler]
-nnoremap	<silent>	[VimFiler]e	:<C-u>VimFilerBufferDir<CR>
-nnoremap	<silent>	[VimFiler]v	:<C-u>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
+nnoremap	<silent>	[VimFiler]e	:<C-U>VimFilerBufferDir<CR>
+nnoremap	<silent>	[VimFiler]v	:<C-U>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
 nmap		<silent>	<C-N>		[VimFiler]v
 "}}}
 " Solarized"{{{
@@ -236,7 +236,7 @@ NeoBundle 'majutsushi/tagbar'
 "-------------------------------------------------------
 " Keymap
 " Open and close Tagbar
-nnoremap <silent> <Leader>t :<C-u>TagbarOpenAutoClose<CR>
+nnoremap <silent> <Leader>t :<C-U>TagbarOpenAutoClose<CR>
 "}}}
 " Doxygentoolkit"{{{
 NeoBundle 'takio-c/DoxygenToolkit.vim'
@@ -244,13 +244,13 @@ NeoBundle 'takio-c/DoxygenToolkit.vim'
 " Gtags"{{{
 NeoBundle 'gtags.vim'
 " let g:Gtags_Result = "ctags"
-" nmap <F2> :<C-u>copen<CR>
-" nmap <F4> :<C-u>cclose<CR>
-" nmap <F5> :<C-u>Gtags<SPACE>
-" nmap <F6> :<C-u>Gtags -f %<CR>
-" nmap <F7> :<C-u>GtagsCursor<CR>
-" nmap <F8> :<C-u>Gozilla<CR>
-" nmap <C-\><C-]> :<C-u>GtagsCursor<CR>
+" nmap <F2> :<C-U>copen<CR>
+" nmap <F4> :<C-U>cclose<CR>
+" nmap <F5> :<C-U>Gtags<SPACE>
+" nmap <F6> :<C-U>Gtags -f %<CR>
+" nmap <F7> :<C-U>GtagsCursor<CR>
+" nmap <F8> :<C-U>Gozilla<CR>
+" nmap <C-\><C-]> :<C-U>GtagsCursor<CR>
 "}}}
 " Vim Fugitive"{{{
 NeoBundle 'tpope/vim-fugitive'
@@ -509,7 +509,7 @@ aug vimrc.markdown
 	au!
 	au BufRead,BufNewFile *.md setfiletype markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
-	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-u>Toc<CR>
+	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
 aug END
 "}}}
 "}}}
@@ -530,11 +530,11 @@ function! s:ChangeCurrentDir(directory, bang)
 endfunction
 
 " Change current directory.
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
+nnoremap <silent> <Space>cd :<C-U>CD<CR>
 "}}}
 " Auto numbering"{{{
-nnoremap <silent> co :<C-u>ContinuousNumber <C-a><CR>
-vnoremap <silent> co :<C-u>ContinuousNumber <C-a><CR>
+nnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
+vnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
 "}}}
@@ -567,9 +567,9 @@ vnoremap s d
 
 "-------------------------------------------------------
 " For replace command
-nnoremap <expr> s/ ':<C-u>%s/' . expand('<cword>') . '//gc<left><left><left>'
-nnoremap <expr> S/ ':<C-u>%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
-vnoremap s/ :<C-u>s//gc<left><left><left>
+nnoremap <expr> s/ ':<C-U>%s/' . expand('<cword>') . '//gc<left><left><left>'
+nnoremap <expr> S/ ':<C-U>%s/\<' . expand('<cword>') . '\>//gc<left><left><left>'
+vnoremap s/ :<C-U>s//gc<left><left><left>
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
