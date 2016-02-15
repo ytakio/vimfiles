@@ -541,10 +541,18 @@ cabbrev h vertical botright h
 
 "-------------------------------------------------------
 " カーソルを表示行で移動
+" For moving
 nnoremap j gj
 nnoremap k gk
 nnoremap <Down> gj
 nnoremap <Up> gk
+
+"-------------------------------------------------------
+" For editing
+nnoremap d "_d
+nnoremap s d
+vnoremap d "_d
+vnoremap s d
 
 "-------------------------------------------------------
 " For replace command
