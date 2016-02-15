@@ -559,6 +559,7 @@ nnoremap <Up> gk
 
 "-------------------------------------------------------
 " For editing
+nnoremap <C-H> "_X
 nnoremap d "_d
 nnoremap s d
 vnoremap d "_d
