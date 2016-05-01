@@ -1,7 +1,11 @@
-#!/bin/sh
-mkdir -p ~/.vim/bundle
-cd ~/.vim/bundle
-git clone git://github.com/Shougo/neobundle.vim.git
-cd neobundle.vim
+#!/bin/sh -x
+PLUGIN_DIR=~/.cache/nvim/repos/github.com/Shougo
+# clean directories
+rm -rf $PLUGIN_DIR
+# create plugin directory
+mkdir -p $PLUGIN_DIR
+cd $PLUGIN_DIR
+git clone git://github.com/Shougo/dein.vim
+cd dein.vim
 #git checkout ver.2.1
 

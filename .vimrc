@@ -4,7 +4,9 @@ set verbose&
 "set verbose=1
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+if &compatible
+	set nocompatible
+endif
 
 " to connect fast mode for terminal
 set ttyfast
@@ -30,51 +32,34 @@ endif
 "}}}
 
 " Plugin"{{{
-" NeoBundle initial"{{{
+" Dein initial"{{{
 if has('vim_starting')
-	if !isdirectory($HOME . '/.vim/bundle/neobundle.vim')
+	if !isdirectory(expand('~/.cache/nvim/repos/github.com/Shougo/dein.vim'))
 		!~/vimfiles/init.sh
 	endif
 	" Required:
-	set rtp+=~/.vim/bundle/neobundle.vim
+	set rtp+=~/.cache/nvim/repos/github.com/Shougo/dein.vim
 endif
 "}}}
 " Start loading
-call neobundle#begin(expand('~/.vim/bundle'))
+call dein#begin(expand('~/.cache/nvim'))
 
-" NeoBundle"{{{
-"NeoBundleFetch 'Shougo/neobundle.vim', { 'rev' : 'ver.2.1' }
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Dein "{{{
+call dein#add('Shougo/dein.vim')
 
 "-------------------------------------------------------
 " Keymap
 " Open MRU
-nnoremap	[Bundle]		<Nop>
-nmap			<Leader>b			[Bundle]
-nnoremap	<silent>			[Bundle]u	:<C-U>NeoBundleUpdate<CR>
-nnoremap	<silent>			[Bundle]c	:<C-U>NeoBundleClean<CR>
-
-" Recommended to install
-" VimProc"{{{
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
-NeoBundle 'Shougo/vimproc' , {
-	\ 'build' : {
-	\	'windows' : 'make -f make_mingw32.mak',
-	\	'cygwin' : 'make -f make_cygwin.mak',
-	\	'mac' : 'make -f make_mac.mak',
-	\	'unix' : 'make -f make_unix.mak',
-	\	},
-	\ }
-"}}}
-" VimShell"{{{
-NeoBundle 'Shougo/vimshell.vim'
-"}}}
+nnoremap	[Dein]		<Nop>
+nmap			<Leader>b			[Dein]
+nnoremap	<silent>			[Dein]u	:<C-U>NeoBundleUpdate<CR>
+nnoremap	<silent>			[Dein]c	:<C-U>NeoBundleClean<CR>
 "}}}
 " Unite"{{{
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'ujihisa/unite-font'
-NeoBundle 'tsukkee/unite-tag'
+call dein#add('Shougo/unite.vim')
+call dein#add('ujihisa/unite-colorscheme')
+call dein#add('ujihisa/unite-font')
+call dein#add('tsukkee/unite-tag')
 
 "file_mruの表示フォーマットを指定。空にすると表示スピードが高速化される
 let g:unite_source_file_mru_filename_format = ''
@@ -89,10 +74,10 @@ nnoremap	<silent> 	[Unite]r	:<C-U>Unite -buffer-name=files file_mru<CR>
 nnoremap	<silent> 	[Unite]R	:<C-U>Unite -buffer-name=register register<CR>
 "}}}
 " NeoMRU"{{{
-NeoBundle 'Shougo/neomru.vim'
+call dein#add('Shougo/neomru.vim')
 "}}}
 " NeoComplcache"{{{
-NeoBundle 'Shougo/neocomplcache.vim'
+call dein#add('Shougo/neocomplcache.vim')
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -185,8 +170,8 @@ let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "}}}
 " NeoSnippet"{{{
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 
 " Plugin key-mappings.
 imap <C-K>     <Plug>(neosnippet_expand_or_jump)
@@ -207,7 +192,7 @@ if has('conceal')
 endif
 "}}}
 " VimFiler"{{{
-NeoBundle 'Shougo/vimfiler.vim'
+call dein#add('Shougo/vimfiler.vim')
 
 "vimデフォルトのエクスプローラをvimfilerで置き換える
 let g:vimfiler_as_default_explorer = 1
@@ -222,7 +207,7 @@ nnoremap	<silent>	[VimFiler]v	:<C-U>VimFilerBufferDir -buffer-name=explorer -spl
 nmap		<silent>	<C-N>		[VimFiler]v
 "}}}
 " Solarized"{{{
-NeoBundle 'altercation/vim-colors-solarized'
+call dein#add('altercation/vim-colors-solarized')
 " settings
 let g:solarized_termcolors=16
 let g:solarized_termtrans=1
@@ -232,17 +217,17 @@ let g:solarized_visibility="normal"
 let g:solarized_hitrail=1
 "}}}
 " Tagbar"{{{
-NeoBundle 'majutsushi/tagbar'
+call dein#add('majutsushi/tagbar')
 "-------------------------------------------------------
 " Keymap
 " Open and close Tagbar
 nnoremap <silent> <Leader>t :<C-U>TagbarOpenAutoClose<CR>
 "}}}
 " Doxygentoolkit"{{{
-NeoBundle 'takio-c/DoxygenToolkit.vim'
+call dein#add('takio-c/DoxygenToolkit.vim')
 "}}}
 " Gtags"{{{
-NeoBundle 'gtags.vim'
+call dein#add('gtags.vim')
 " let g:Gtags_Result = "ctags"
 " nmap <F2> :<C-U>copen<CR>
 " nmap <F4> :<C-U>cclose<CR>
@@ -253,10 +238,10 @@ NeoBundle 'gtags.vim'
 " nmap <C-\><C-]> :<C-U>GtagsCursor<CR>
 "}}}
 " Vim Fugitive"{{{
-NeoBundle 'tpope/vim-fugitive'
+call dein#add('tpope/vim-fugitive')
 "}}}
 " Lightline"{{{
-NeoBundle 'itchyny/lightline.vim'
+call dein#add('itchyny/lightline.vim')
 let g:lightline = {
 	\ 'colorscheme': 'solarized',
 	\ 'mode_map': {'c': 'NORMAL'},
@@ -320,32 +305,29 @@ endfunction
 "}}}
 " W3m"{{{
 if executable('w3m')
-	NeoBundle 'yuratomo/w3m.vim'
+	call dein#add('yuratomo/w3m.vim')
 endif
 "}}}
 " Tabular"{{{
-NeoBundle 'godlygeek/tabular'
+call dein#add('godlygeek/tabular')
 "}}}
 " Vim Markdown"{{{
-NeoBundle 'plasticboy/vim-markdown'
+call dein#add('plasticboy/vim-markdown')
 let g:vim_markdown_folding_disabled=1
 "}}}
 " Previm"{{{
-NeoBundle 'kannokanno/previm'
+call dein#add('kannokanno/previm')
 "}}}
 " Open Browser"{{{
-NeoBundle 'tyru/open-browser.vim'
+call dein#add('tyru/open-browser.vim')
 "}}}
 " Calendar"{{{
-NeoBundle 'itchyny/calendar.vim'
+call dein#add('itchyny/calendar.vim')
 let g:calendar_google_calendar = 1
 "}}}
 
 " End loading
-call neobundle#end()
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
+call dein#end()
 "}}}
 
 " Searching"{{{
@@ -567,6 +549,15 @@ nnoremap <C-H> "-X
 nnoremap ss :<C-U>%s/<C-R><C-W>//gc<left><left><left>
 nnoremap sw :<C-U>%s/\<<C-R><C-W>\>//gc<left><left><left>
 vnoremap s :<C-U>s///gc<left><left><left>
+"}}}
+
+" For post process"{{{
+"-------------------------------------------------------
+" Dein check"{{{
+if dein#check_install()
+	call dein#install()
+endif
+"}}}
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
