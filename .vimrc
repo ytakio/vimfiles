@@ -548,7 +548,7 @@ nnoremap <C-H> "-X
 " For replace command
 nnoremap ss :<C-U>%s/<C-R><C-W>//gc<left><left><left>
 nnoremap sw :<C-U>%s/\<<C-R><C-W>\>//gc<left><left><left>
-vnoremap s :<C-U>s///gc<left><left><left>
+vnoremap s :<C-U>'<,'>s//gc<left><left><left>
 "}}}
 
 " For post process"{{{
