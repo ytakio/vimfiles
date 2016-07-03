@@ -1,6 +1,8 @@
 #!/bin/sh -x
-git clone git://github.com/yascentur/Ricty.git
+mkdir Ricty
+#git clone git://github.com/yascentur/Ricty.git
 cd Ricty
+wget http://www.rs.tus.ac.jp/yyusa/ricty/ricty_generator.sh; chmod a+x ricty_generator.sh
 wget --content-disposition https://github.com/google/fonts/blob/master/ofl/inconsolata/Inconsolata-Bold.ttf?raw=true
 wget --content-disposition https://github.com/google/fonts/blob/master/ofl/inconsolata/Inconsolata-Regular.ttf?raw=true
 wget http://iij.dl.sourceforge.jp/mix-mplus-ipa/59022/migu-1m-20130617.zip
