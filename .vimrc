@@ -52,8 +52,8 @@ call dein#add('Shougo/dein.vim')
 " Open MRU
 nnoremap	[Dein]		<Nop>
 nmap			<Leader>b			[Dein]
-nnoremap	<silent>			[Dein]u	:<C-U>NeoBundleUpdate<CR>
-nnoremap	<silent>			[Dein]c	:<C-U>NeoBundleClean<CR>
+nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
+nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 "}}}
 " Unite"{{{
 call dein#add('Shougo/unite.vim')
