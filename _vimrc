@@ -82,20 +82,27 @@ let g:neomru#follow_links = 1
 "}}}
 " Completion"{{{
 if has('nvim') " neovim side
-	" deoplete"{{{
+	" Completion pack for neovim with Python3"{{{
 	if has('python3')
+		" deoplete"{{{
 		call dein#add('Shougo/deoplete.nvim')
 
 		"----------------------------------------
 		" Settings
 		let g:deoplete#enable_at_startup = 1
-		"----------------------------------------
+		"}}}
+		" Jedi"{{{
+		call dein#add('davidhalter/jedi')
+		"}}}
+		" deoplete-jedi"{{{
+		call dein#add('zchee/deoplete-jedi')
+		"}}}
 	else
 		echo 'Please install neovim client in python3: type "pip3 install neovim"'
 	endif
 	"}}}
 else " vim side
-" NeoComplcache"{{{
+	" NeoComplcache"{{{
 	call dein#add('Shougo/neocomplcache.vim')
 
 	"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -187,7 +194,7 @@ else " vim side
 	" For perlomni.vim setting.
 	" https://github.com/c9s/perlomni.vim
 	let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"}}}
+	"}}}
 endif
 "}}}
 " NeoSnippet"{{{
