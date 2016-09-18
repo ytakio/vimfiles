@@ -82,24 +82,24 @@ let g:neomru#follow_links = 1
 "}}}
 " Completion"{{{
 if has('nvim') " neovim side
-	" Completion pack for neovim with Python3"{{{
+	" deoplete"{{{
 	if has('python3')
-		" deoplete"{{{
 		call dein#add('Shougo/deoplete.nvim')
-
 		"----------------------------------------
 		" Settings
 		let g:deoplete#enable_at_startup = 1
-		"}}}
-		" Jedi"{{{
-		call dein#add('davidhalter/jedi')
-		"}}}
-		" deoplete-jedi"{{{
-		call dein#add('zchee/deoplete-jedi')
-		"}}}
 	else
 		echo 'Please install neovim client in python3: type "pip3 install neovim"'
 	endif
+	"}}}
+	" Jedi"{{{
+	call dein#add('davidhalter/jedi')
+	"}}}
+	" deoplete-jedi"{{{
+	call dein#add('zchee/deoplete-jedi')
+	"}}}
+	" neco-vim"{{{
+	call dein#add('Shougo/neco-vim')
 	"}}}
 else " vim side
 	" NeoComplcache"{{{
@@ -218,6 +218,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+"}}}
+" neco-look: English word completion"{{{
+call dein#add('ujihisa/neco-look')
 "}}}
 " VimFiler"{{{
 call dein#add('Shougo/vimfiler.vim')
