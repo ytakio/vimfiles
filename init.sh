@@ -1,5 +1,5 @@
 #!/bin/sh -x
-PLUGIN_DIR=~/.cache/nvim/repos/github.com/Shougo
+PLUGIN_DIR=~/.config/nvim/plugins/repos/github.com/Shougo
 # clean directories
 rm -rf $PLUGIN_DIR
 # create plugin directory

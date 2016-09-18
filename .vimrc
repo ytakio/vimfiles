@@ -32,17 +32,21 @@ endif
 "}}}
 
 " Plugin"{{{
+" Base path
+let s:config_path = '~/.config/nvim/'
+let s:plugin_path = s:config_path . 'plugins/'
+let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 " Dein initial"{{{
 if has('vim_starting')
-	if !isdirectory(expand('~/.cache/nvim/repos/github.com/Shougo/dein.vim'))
+	if !isdirectory(expand(s:dein_path))
 		!~/vimfiles/init.sh
 	endif
 	" Required:
-	set rtp+=~/.cache/nvim/repos/github.com/Shougo/dein.vim
+	let &rtp = &rtp . ',' . s:dein_path
 endif
 "}}}
 " Start loading
-call dein#begin(expand('~/.cache/nvim'))
+call dein#begin(expand(s:plugin_path))
 
 " Dein "{{{
 call dein#add('Shougo/dein.vim')
@@ -52,8 +56,8 @@ call dein#add('Shougo/dein.vim')
 " Open MRU
 nnoremap	[Dein]		<Nop>
 nmap			<Leader>b			[Dein]
-nnoremap	<silent>			[Dein]u	:<C-U>NeoBundleUpdate<CR>
-nnoremap	<silent>			[Dein]c	:<C-U>NeoBundleClean<CR>
+nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
+nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 "}}}
 " Unite"{{{
 call dein#add('Shougo/unite.vim')
@@ -75,6 +79,10 @@ nnoremap	<silent> 	[Unite]R	:<C-U>Unite -buffer-name=register register<CR>
 "}}}
 " NeoMRU"{{{
 call dein#add('Shougo/neomru.vim')
+
+" change to base path
+let g:neomru#file_mru_path = s:config_path . 'neomru/file'
+let g:neomru#directory_mru_path = s:config_path . 'neomru/directory'
 "}}}
 " NeoComplcache"{{{
 call dein#add('Shougo/neocomplcache.vim')
