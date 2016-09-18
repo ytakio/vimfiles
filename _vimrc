@@ -32,21 +32,21 @@ endif
 "}}}
 
 " Plugin"{{{
-" Base path
-let s:config_path = '~/.config/nvim/'
-let s:plugin_path = s:config_path . 'plugins/'
-let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 " Dein initial"{{{
 if has('vim_starting')
+	" Base path
+	let s:config_path = '~/.config/nvim/'
+	let s:plugin_path = s:config_path . 'plugins/'
+	let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 	if !isdirectory(expand(s:dein_path))
 		!~/vimfiles/init.sh
 	endif
 	" Required:
 	let &runtimepath = &runtimepath . ',' . s:dein_path
-	" Start loading
-	call dein#begin(expand(s:plugin_path))
 endif
 "}}}
+" Start loading
+call dein#begin(expand(s:plugin_path))
 
 " Dein "{{{
 call dein#add('Shougo/dein.vim')
