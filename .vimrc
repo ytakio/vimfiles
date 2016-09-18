@@ -42,11 +42,11 @@ if has('vim_starting')
 		!~/vimfiles/init.sh
 	endif
 	" Required:
-	let &rtp = &rtp . ',' . s:dein_path
+	let &runtimepath = &runtimepath . ',' . s:dein_path
+	" Start loading
+	call dein#begin(expand(s:plugin_path))
 endif
 "}}}
-" Start loading
-call dein#begin(expand(s:plugin_path))
 
 " Dein "{{{
 call dein#add('Shougo/dein.vim')
@@ -468,7 +468,7 @@ let g:load_doxygen_syntax=1
 "}}}
 
 " Filetype"{{{
-" Put these in an autocmd group, so that we can delete them easily.
+" Put these in an autocmd group so that we can delete them easily.
 " For all type"{{{
 aug vimrc.all
 	au!
