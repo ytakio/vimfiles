@@ -81,8 +81,8 @@ nnoremap	<silent> 	[Unite]R	:<C-U>Unite -buffer-name=register register<CR>
 call dein#add('Shougo/neomru.vim')
 
 " change to base path
-let g:neomru#file_mru_path = s:config_path . 'neomru/file'
-let g:neomru#directory_mru_path = s:config_path . 'neomru/directory'
+let g:neomru#file_mru_path = expand(s:config_path . 'neomru/file')
+let g:neomru#directory_mru_path = expand(s:config_path . 'neomru/directory')
 let g:neomru#follow_links = 1
 "}}}
 " NeoComplcache"{{{
