@@ -33,11 +33,11 @@ endif
 
 " Plugin"{{{
 " Dein initial"{{{
+" Base path
+let s:config_path = '~/.config/nvim/'
+let s:plugin_path = s:config_path . 'plugins/'
+let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 if has('vim_starting')
-	" Base path
-	let s:config_path = '~/.config/nvim/'
-	let s:plugin_path = s:config_path . 'plugins/'
-	let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 	if !isdirectory(expand(s:dein_path))
 		!~/vimfiles/init.sh
 	endif
@@ -83,6 +83,7 @@ call dein#add('Shougo/neomru.vim')
 " change to base path
 let g:neomru#file_mru_path = s:config_path . 'neomru/file'
 let g:neomru#directory_mru_path = s:config_path . 'neomru/directory'
+let g:neomru#follow_links = 1
 "}}}
 " NeoComplcache"{{{
 call dein#add('Shougo/neocomplcache.vim')
