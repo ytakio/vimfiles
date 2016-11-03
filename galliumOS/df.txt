@@ -1,13 +1,13 @@
-Filesystem     1K-blocks    Used Available Use% Mounted on
-udev             1972296       0   1972296   0% /dev
-tmpfs             396384    6340    390044   2% /run
-/dev/mmcblk0p7  10190136 7342132   2307332  77% /
-tmpfs            1981912     152   1981760   1% /dev/shm
-tmpfs               5120       4      5116   1% /run/lock
-tmpfs            1981912       0   1981912   0% /sys/fs/cgroup
-tmpfs            1981912     896   1981016   1% /cache
-tmpfs            1981912       8   1981904   1% /tmp
-/dev/sda1        9711136 1413900   7780884  16% /usr/share
-/dev/sda2       19832484 3347428  15454556  18% /home
-cgmfs                100       0       100   0% /run/cgmanager/fs
-tmpfs             396384       8    396376   1% /run/user/1000
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.9G     0  1.9G   0% /dev
+tmpfs           388M  6.2M  381M   2% /run
+/dev/mmcblk0p7  9.8G  4.2G  5.1G  45% /
+tmpfs           1.9G   26M  1.9G   2% /dev/shm
+tmpfs           5.0M  4.0K  5.0M   1% /run/lock
+tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup
+tmpfs           1.9G   22M  1.9G   2% /cache
+tmpfs           1.9G  8.0K  1.9G   1% /tmp
+/dev/sda1       9.3G  1.4G  7.5G  16% /usr/share
+/dev/sda2        19G  3.2G   15G  18% /home
+cgmfs           100K     0  100K   0% /run/cgmanager/fs
+tmpfs           388M  8.0K  388M   1% /run/user/1000
