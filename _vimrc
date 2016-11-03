@@ -1,16 +1,23 @@
 " Platform"{{{
-" For debug about setting process
+" For debug about setting process{{{
 set verbose&
 "set verbose=1
+"}}}
+" Setting presets{{{
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 if &compatible
-	set nocompatible
+	if has('nvim')
+		set nocompatible
+	endif
 endif
 
 " to connect fast mode for terminal
-set ttyfast
-
+if has('nvim')
+	set ttyfast
+endif
+"}}}
+" User interfaces{{{
 " enable to share clipboard
 set clipboard&
 set clipboard=unnamed
@@ -29,6 +36,7 @@ if has('unix') && !has('gui_running')
 	endif
 	set t_Co=256
 endif
+"}}}
 "}}}
 
 " Plugin"{{{
@@ -87,7 +95,18 @@ if has('nvim') " neovim side
 		call dein#add('Shougo/deoplete.nvim')
 		"----------------------------------------
 		" Settings
-		let g:deoplete#enable_at_startup = 1
+		let g:deoplete#enable_at_startup = 1	" use at startup
+		"----------------------------------------
+		" keymap
+		" <C-h>, <BS>: close popup and delete backword char.
+		inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+		inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
+		" <CR>: close popup and save indent.
+		inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+		function! s:my_cr_function() abort
+			return deoplete#close_popup() . "\<CR>"
+		endfunction
 	else
 		echo 'Please install neovim client in python3: type "pip3 install neovim"'
 	endif
