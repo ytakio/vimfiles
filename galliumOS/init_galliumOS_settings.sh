@@ -14,12 +14,11 @@ mirror_and_link() {
 	echo "${NUMBER}. mirroring ${TARGET} to ${MIRROR}"
 	echo "${NUMBER}.1. create ${MIRROR} for user config directory"
 	$ECHO mkdir -p ${MIRROR}
-	$ECHO rmdir -rf ${MIRROR}
 
-	echo "${NUMBER}.2. move and link ${HOME}/${TARGET} to ${MIRROR}"
-	$ECHO mv ${HOME}/${TARGET} ${MIRROR}
-	$ECHO ln -nfs ${MIRROR} ${HOME}/${TARGET}
+	echo "${NUMBER}.2. move and link ${HOME}/${TARGET} to ${MIRROR}/${USER}"
+	$ECHO mv ${HOME}/${TARGET} ${MIRROR}/${USER}
+	$ECHO ln -nfs ${MIRROR}/${USER} ${HOME}/${TARGET}
 }
 
-mirror_and_link 1 .config /var/config/${USER}
-mirror_and_link 2 .cache /cache_${USER}
+mirror_and_link 1 .config /var/config
+mirror_and_link 2 .cache /cache
