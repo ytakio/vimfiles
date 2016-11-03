@@ -1,0 +1,6 @@
+total 344
+drwxr-xr-x 44 takio takio  4096 11月  3 02:13 ./
+drwxr-xr-x  4 root  root   4096  7月  3 11:58 ../
+lrwxrwxrwx  1 takio takio     6  7月  3 16:14 .cache -> /cache/
+lrwxrwxrwx  1 takio takio    17  7月  3 14:11 .config -> /var/config/takio/
+lrwxrwxrwx  1 takio takio    28  9月 18 17:52 .Xmodmap -> vimfiles/_Xmodmap.chromebook
