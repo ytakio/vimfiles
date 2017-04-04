@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 ECHO=echo
 if [ -n "${SUDO_USER}" ]; then
 	USER=${SUDO_USER}
@@ -15,9 +15,9 @@ mirror_and_link() {
 	echo "${NUMBER}.1. create ${MIRROR} for user config directory"
 	$ECHO mkdir -p ${MIRROR}
 
-	echo "${NUMBER}.2. move and link ${HOME}/${TARGET} to ${MIRROR}/${USER}"
-	$ECHO mv ${HOME}/${TARGET} ${MIRROR}/${USER}
-	$ECHO ln -nfs ${MIRROR}/${USER} ${HOME}/${TARGET}
+	echo "${NUMBER}.2. move and link ${HOME}/${TARGET} to ${MIRROR}"
+	$ECHO mv ${HOME}/${TARGET} ${MIRROR}
+	$ECHO ln -nfs ${MIRROR} ${HOME}/${TARGET}
 }
 
 mirror_and_link 1 .config /var/config
