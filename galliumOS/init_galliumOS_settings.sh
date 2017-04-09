@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 ECHO=echo
 if [ -n "${SUDO_USER}" ]; then
 	USER=${SUDO_USER}
