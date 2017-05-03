@@ -562,6 +562,31 @@ endfunction
 " Change current directory.
 nnoremap <silent> <Space>cd :<C-U>CD<CR>
 "}}}
+" Brand new post for pelican"{{{
+command! -nargs=? -bang PelicanPostRST	call s:PelicanNewPost('<bang>', '<args>', 'rst')
+command! -nargs=? -bang PelicanPostMD		call s:PelicanNewPost('<bang>', '<args>', 'md')
+function! s:PelicanNewPost(bang, name, ext)
+	let l:title = a:name
+	if l:title == ''
+		let l:title = input('File title name: ')
+	endif
+	"let l:category = input('Category: ', '', 'file')
+	let l:fname = strftime("%Y-%m-%dT%H%M")
+	if l:title != ''
+		let l:fname .= '_' . l:title
+	endif
+	let l:fname .= '.' . a:ext
+
+	execute 'edit' . a:bang . ' ' . l:fname
+endfunction
+"-------------------------------------------------------
+" Keymap
+" Open MRU
+nnoremap	[Pelican]		<Nop>
+nmap			<Leader>p			[Pelican]
+nnoremap	<silent>			[Pelican]r	:<C-u>PelicanPostRST<CR>
+nnoremap	<silent>			[Pelican]m	:<C-u>PelicanPostMD<CR>
+"}}}
 " Auto numbering"{{{
 nnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 vnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
