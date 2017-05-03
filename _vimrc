@@ -220,6 +220,9 @@ endif
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
+" Settings directory to my snippets
+ let g:neosnippet#snippets_directory = '~/vimfiles/vim/snippets'
+
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -277,7 +280,7 @@ nnoremap <silent> <Leader>t :<C-U>TagbarOpenAutoClose<CR>
 call dein#add('takio-c/DoxygenToolkit.vim')
 "}}}
 " Gtags"{{{
-call dein#add('gtags.vim')
+call dein#add('vim-scripts/gtags.vim')
 " let g:Gtags_Result = "ctags"
 " nmap <F2> :<C-U>copen<CR>
 " nmap <F4> :<C-U>cclose<CR>
