@@ -1,0 +1,13 @@
+snippet     meta
+abbr        pelican meta
+options     head
+	Title: ${1:title}
+	Date: `strftime("%Y-%m-%dT%H:%M:%S")`
+	Modified: `strftime("%Y-%m-%dT%H:%M:%S")`
+	Category: ${2:category}
+	Tags: ${3:tag1, tag2, ...}
+	Authors: Takio
+	Summary: ${4:summary}
+
+	${0}
+
