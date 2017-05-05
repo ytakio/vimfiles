@@ -566,18 +566,22 @@ nnoremap <silent> <Space>cd :<C-U>CD<CR>
 command! -nargs=? -bang PelicanPostRST	call s:PelicanNewPost('<bang>', '<args>', 'rst')
 command! -nargs=? -bang PelicanPostMD		call s:PelicanNewPost('<bang>', '<args>', 'md')
 function! s:PelicanNewPost(bang, name, ext)
-	let l:title = a:name
-	if l:title == ''
-		let l:title = input('File title name: ')
-	endif
 	"let l:category = input('Category: ', '', 'file')
-	let l:fname = strftime("%Y-%m-%dT%H%M")
-	if l:title != ''
-		let l:fname .= '_' . l:title
+	if a:name != ''
+		let l:fname = a:name
+	else
+		let l:date = input('Date: ', strftime("%Y-%m-%d-%H%M"))
+		if l:date == ''
+			let l:date = strftime("%Y-%m-%d-%H%M")
+		endif
+		let l:title = input('Title: ')
+		if l:title != ''
+			let l:title = '-' . l:title
+		endif
+		let l:fname = l:date . l:title
 	endif
-	let l:fname .= '.' . a:ext
 
-	execute 'edit' . a:bang . ' ' . l:fname
+	execute 'edit' . a:bang . ' ' . l:fname . '.' . a:ext
 endfunction
 "-------------------------------------------------------
 " Keymap
