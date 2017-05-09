@@ -581,7 +581,7 @@ function! s:PelicanNewPost(bang, name, ext)
 		let l:fname = l:date . l:title
 	endif
 
-	execute 'edit' . a:bang . ' ' . l:fname . '.' . a:ext
+	execute 'edit' . a:bang . ' ' . escape(l:fname . '.' . a:ext, ' ')
 endfunction
 "-------------------------------------------------------
 " Keymap
