@@ -563,25 +563,33 @@ endfunction
 nnoremap <silent> <Space>cd :<C-U>CD<CR>
 "}}}
 " Brand new post for pelican"{{{
+let g:mylog_path = '~/mylog'
 command! -nargs=? -bang PelicanPostRST	call s:PelicanNewPost('<bang>', '<args>', 'rst')
 command! -nargs=? -bang PelicanPostMD		call s:PelicanNewPost('<bang>', '<args>', 'md')
 function! s:PelicanNewPost(bang, name, ext)
-	"let l:category = input('Category: ', '', 'file')
-	if a:name != ''
-		let l:fname = a:name
-	else
-		let l:date = input('Date: ', strftime("%Y-%m-%d-%H%M"))
-		if l:date == ''
-			let l:date = strftime("%Y-%m-%d-%H%M")
+	tabnew
+	try
+		execute 'lcd ' . g:mylog_path . "/posts"
+		let l:dir = input('Category dir: ', '', 'dir')
+		if a:name != ''
+			let l:fname = a:name
+		else
+			let l:date = input('Date: ', strftime("%Y-%m-%d-%H%M"))
+			if l:date == ''
+				let l:date = strftime("%Y-%m-%d-%H%M")
+			endif
+			let l:title = input('Title: ')
+			if l:title != ''
+				let l:title = '-' . l:title
+			endif
+			let l:fname = l:date . l:title
 		endif
-		let l:title = input('Title: ')
-		if l:title != ''
-			let l:title = '-' . l:title
-		endif
-		let l:fname = l:date . l:title
-	endif
 
-	execute 'edit' . a:bang . ' ' . escape(l:fname . '.' . a:ext, ' ')
+		execute 'edit' . a:bang . ' ' . escape(l:dir . l:fname . '.' . a:ext, ' ')
+		execute 'lcd ' . g:mylog_path
+	catch
+		tabclose
+	endtry
 endfunction
 "-------------------------------------------------------
 " Keymap
