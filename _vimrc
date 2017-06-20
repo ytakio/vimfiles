@@ -569,7 +569,7 @@ command! -nargs=? -bang PelicanPostMD		call s:PelicanNewPost('<bang>', '<args>',
 function! s:PelicanNewPost(bang, name, ext)
 	tabnew
 	try
-		execute 'lcd ' . g:mylog_path . "/posts"
+		execute 'lcd ' . g:mylog_path . "/articles"
 		let l:dir = input('Category dir: ', '', 'dir')
 		if a:name != ''
 			let l:fname = a:name
