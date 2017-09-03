@@ -1,14 +1,20 @@
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
+#source /etc/network/interfaces.d/*
+
 # The loopback network interface
 auto lo
 iface lo inet loopback
 
-auto wlan0
-#allow-hotplug wlan0
-iface wlan0 inet static
-	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+auto enp4s0
+allow-hotplug enp4s0
+#auto wlp2s0
+#allow-hotplug wlp2s0
+
+iface enp4s0 inet static
+#iface wlp2s0 inet static
+#	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 	address 192.168.1.130
 	network 192.168.1.0
 	netmask 255.255.255.0
