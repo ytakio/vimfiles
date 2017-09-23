@@ -70,18 +70,19 @@ nmap			<Leader>b			[Dein]
 nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
 nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 "}}}
-" Unite"{{{
-call dein#add('Shougo/unite.vim')
-call dein#add('tsukkee/unite-tag')
+" Denite"{{{
+" Denite has been replaced with denite.nvim
+call dein#add('Shougo/denite.nvim')
 
 "-------------------------------------------------------
 " Keymap
 " Open MRU
-nnoremap						[Unite]			<Nop>
-nmap								<Leader>u		[Unite]
-nnoremap	<silent> 	[Unite]f		:<C-U>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap	<silent> 	[Unite]r	:<C-U>Unite -buffer-name=files file_mru<CR>
-nnoremap	<silent> 	[Unite]R	:<C-U>Unite -buffer-name=register register<CR>
+nnoremap						[Denite]			<Nop>
+nmap								<Leader>f		[Denite]
+nnoremap	<silent> 	[Denite]f		:<C-U>DeniteBufferDir file<CR>
+nnoremap	<silent> 	[Denite]r		:<C-U>Denite file_mru<CR>
+nnoremap	<silent> 	[Denite]R		:<C-U>Denite register<CR>
+nmap			<silent>	<C-N>				[Denite]f
 "}}}
 " NeoMRU"{{{
 call dein#add('Shougo/neomru.vim')
@@ -248,19 +249,21 @@ endif
 call dein#add('ujihisa/neco-look')
 "}}}
 " VimFiler"{{{
-call dein#add('Shougo/vimfiler.vim')
+if !has('nvim')
+	call dein#add('Shougo/vimfiler.vim')
 
-"vimデフォルトのエクスプローラをvimfilerで置き換える
-let g:vimfiler_as_default_explorer = 1
-"セーフモードを無効にした状態で起動する
-let g:vimfiler_safe_mode_by_default = 0
-"-------------------------------------------------------
-" Keymap
-nnoremap				[VimFiler]		<Nop>
-nmap					<Leader>f	[VimFiler]
-nnoremap	<silent>	[VimFiler]e	:<C-U>VimFilerBufferDir<CR>
-nnoremap	<silent>	[VimFiler]v	:<C-U>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
-nmap		<silent>	<C-N>		[VimFiler]v
+	"vimデフォルトのエクスプローラをvimfilerで置き換える
+	let g:vimfiler_as_default_explorer = 1
+	"セーフモードを無効にした状態で起動する
+	let g:vimfiler_safe_mode_by_default = 0
+	"-------------------------------------------------------
+	" Keymap
+	nnoremap				[VimFiler]		<Nop>
+	nmap					<Leader>f	[VimFiler]
+	nnoremap	<silent>	[VimFiler]e	:<C-U>VimFilerBufferDir<CR>
+	nnoremap	<silent>	[VimFiler]v	:<C-U>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
+	nmap		<silent>	<C-N>		[VimFiler]v
+endif
 "}}}
 " Solarized"{{{
 call dein#add('altercation/vim-colors-solarized')
@@ -375,6 +378,12 @@ call dein#add('tyru/open-browser.vim')
 " Calendar"{{{
 call dein#add('itchyny/calendar.vim')
 let g:calendar_google_calendar = 1
+"}}}
+" gen_tags.vim{{{
+call dein#add('jsfaint/gen_tags.vim')
+"}}}
+" denite-gtags{{{
+call dein#add('ozelentok/denite-gtags')
 "}}}
 
 " End loading
