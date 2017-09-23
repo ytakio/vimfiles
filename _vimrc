@@ -21,9 +21,9 @@ endif
 " enable to share clipboard
 set clipboard&
 set clipboard=unnamed
-"if has('unnamedplus')
+if has('unnamedplus')
 	set clipboard+=unnamedplus
-"endif
+endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=n
@@ -42,11 +42,11 @@ endif
 " Plugin"{{{
 " Dein initial"{{{
 " Base path
-let s:config_path	= empty($XDG_CONFIG_HOME)	? expand('~/.config/') : $XDG_CONFIG_HOME
-let s:data_path		= empty($XDG_DATA_HOME)		? expand('~/.local/share/nvim/') : $XDG_DATA_HOME
-let s:cache_path	= empty($XDG_CACHE_HOME)	? expand('~/.cache/') : $XDG_CACHE_HOME
-let s:plugin_path	= s:data_path . 'plugins/'
-let s:dein_path		= s:plugin_path . 'repos/github.com/Shougo/dein.vim'
+let s:config_path	= empty($XDG_CONFIG_HOME)	? expand('~/.config') : $XDG_CONFIG_HOME
+let s:data_path		= empty($XDG_DATA_HOME)		? expand('~/.local/share/nvim') : $XDG_DATA_HOME
+let s:cache_path	= empty($XDG_CACHE_HOME)	? expand('~/.cache') : $XDG_CACHE_HOME
+let s:plugin_path	= s:data_path . '/plugins'
+let s:dein_path		= s:plugin_path . '/repos/github.com/Shougo/dein.vim'
 if has('vim_starting')
 	if !isdirectory(s:dein_path)
 		call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_path))
@@ -111,7 +111,7 @@ if has('nvim') " neovim side
 			return deoplete#close_popup() . "\<CR>"
 		endfunction
 	else
-		echo 'Please install neovim client in python3: type "pip3 install neovim"'
+		confirm('Please install neovim client in python3: type "pip3 install neovim"')
 	endif
 	"}}}
 	" Jedi"{{{
