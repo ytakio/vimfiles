@@ -26,7 +26,7 @@ set clipboard=unnamed
 "endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-set mouse=a
+set mouse=n
 
 " コンソールでのカラー表示のための設定(暫定的にUNIX専用)
 if has('unix') && !has('gui_running')
@@ -42,22 +42,25 @@ endif
 " Plugin"{{{
 " Dein initial"{{{
 " Base path
-let s:config_path = '~/.config/nvim/'
-let s:plugin_path = s:config_path . 'plugins/'
-let s:dein_path = s:plugin_path . 'repos/github.com/Shougo/dein.vim'
+let s:config_path	= empty($XDG_CONFIG_HOME)	? expand('~/.config/') : $XDG_CONFIG_HOME
+let s:data_path		= empty($XDG_DATA_HOME)		? expand('~/.local/share/nvim/') : $XDG_DATA_HOME
+let s:cache_path	= empty($XDG_CACHE_HOME)	? expand('~/.cache/') : $XDG_CACHE_HOME
+let s:plugin_path	= s:data_path . 'plugins/'
+let s:dein_path		= s:plugin_path . 'repos/github.com/Shougo/dein.vim'
 if has('vim_starting')
-	if !isdirectory(expand(s:dein_path))
-		!~/vimfiles/init.sh
+	if !isdirectory(s:dein_path)
+		call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_path))
 	endif
 	" Required:
-	let &runtimepath = &runtimepath . ',' . s:dein_path
+	let &runtimepath = s:dein_path . ',' . &runtimepath
 endif
 "}}}
 " Start loading
-call dein#begin(expand(s:plugin_path))
+"if dein#load_state(s:plugin_path)
+call dein#begin(s:plugin_path)
 
 " Dein "{{{
-call dein#add('Shougo/dein.vim')
+call dein#add(s:dein_path)
 
 "-------------------------------------------------------
 " Keymap
@@ -376,6 +379,13 @@ let g:calendar_google_calendar = 1
 
 " End loading
 call dein#end()
+"call dein#save_state()
+"endif
+" Dein check"{{{
+if dein#check_install()
+	call dein#install()
+endif
+"}}}
 "}}}
 
 " Searching"{{{
@@ -542,6 +552,12 @@ aug vimrc.markdown
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
 aug END
 "}}}
+" For template"{{{
+aug vimrc.template
+	au!
+	au BufNewFile *.md 0r ~/vimfiles/vim/template/markdown.txt
+aug END
+"}}}
 "}}}
 
 " Functions"{{{
@@ -638,11 +654,6 @@ vnoremap s :<C-U>'<,'>s//gc<left><left><left>
 
 " For post process"{{{
 "-------------------------------------------------------
-" Dein check"{{{
-if dein#check_install()
-	call dein#install()
-endif
-"}}}
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:

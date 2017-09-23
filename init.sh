@@ -1,11 +1,10 @@
 #!/bin/sh -x
-PLUGIN_DIR=~/.config/nvim/plugins/repos/github.com/Shougo
+TOOLS_DIR=~/.config/nvim/tools
 # clean directories
-rm -rf $PLUGIN_DIR
+rm -rf $TOOLS_DIR
 # create plugin directory
-mkdir -p $PLUGIN_DIR
-cd $PLUGIN_DIR
+mkdir -p $TOOLS_DIR; cd $TOOLS_DIR
 git clone git://github.com/Shougo/dein.vim
-cd dein.vim
+cd $TOOLS_DIR/dein.vim
 #git checkout ver.2.1
 
