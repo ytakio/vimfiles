@@ -75,14 +75,18 @@ nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'r
 call dein#add('Shougo/denite.nvim')
 
 "-------------------------------------------------------
+" Settings
+call denite#custom#source('file_rec', 'matchers', ['matcher_substring'])
+"-------------------------------------------------------
 " Keymap
-" Open MRU
-nnoremap						[Denite]			<Nop>
-nmap								<Leader>f		[Denite]
-nnoremap	<silent> 	[Denite]f		:<C-U>DeniteBufferDir file<CR>
-nnoremap	<silent> 	[Denite]r		:<C-U>Denite file_mru<CR>
-nnoremap	<silent> 	[Denite]R		:<C-U>Denite register<CR>
-nmap			<silent>	<C-N>				[Denite]f
+nnoremap						[Denite]					<Nop>
+nmap								<Leader><Space>		[Denite]
+nnoremap	<silent> 	[Denite]f					:<C-U>DeniteBufferDir file<CR>
+nnoremap	<silent> 	[Denite]e					:<C-U>DeniteProjectDir file_rec<CR>
+nnoremap	<silent> 	[Denite]r					:<C-U>Denite file_mru<CR>
+nnoremap	<silent> 	[Denite]v					:<C-U>Denite register<CR>
+"nmap			<silent>	<C-N>							[Denite]f
+"nmap			<silent>	<C-P>							[Denite]e
 "}}}
 " NeoMRU"{{{
 call dein#add('Shougo/neomru.vim')
@@ -121,6 +125,9 @@ if has('nvim') " neovim side
 	" deoplete-jedi"{{{
 	call dein#add('zchee/deoplete-jedi')
 	"}}}
+	" deoplete-gtags.vim{{{
+	call dein#add('ozelentok/deoplete-gtags')
+"}}}
 	" neco-vim"{{{
 	call dein#add('Shougo/neco-vim')
 	"}}}
