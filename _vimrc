@@ -63,8 +63,10 @@ call dein#begin(s:plugin_path)
 call dein#add(s:dein_path)
 
 "-------------------------------------------------------
+" Settings
+"let g:dein#cache_directory = s:cache_path
+"-------------------------------------------------------
 " Keymap
-" Open MRU
 nnoremap	[Dein]		<Nop>
 nmap			<Leader>b			[Dein]
 nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
@@ -83,6 +85,8 @@ nnoremap						[Denite]					<Nop>
 nmap								<Leader><Space>		[Denite]
 nnoremap	<silent> 	[Denite]f					:<C-U>DeniteBufferDir file<CR>
 nnoremap	<silent> 	[Denite]e					:<C-U>DeniteProjectDir file_rec<CR>
+nnoremap	<silent> 	[Denite]g					:<C-U>DeniteProjectDir grep<CR>
+nnoremap	<silent> 	[Denite]d					:<C-U>Denite line<CR>
 nnoremap	<silent> 	[Denite]r					:<C-U>Denite file_mru<CR>
 nnoremap	<silent> 	[Denite]v					:<C-U>Denite register<CR>
 "nmap			<silent>	<C-N>							[Denite]f
