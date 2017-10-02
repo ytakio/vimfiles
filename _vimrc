@@ -84,8 +84,9 @@ call denite#custom#source('file_rec', 'matchers', ['matcher_substring'])
 nnoremap						[Denite]					<Nop>
 nmap								<Leader><Space>		[Denite]
 nnoremap	<silent> 	[Denite]f					:<C-U>DeniteBufferDir file<CR>
+nnoremap	<silent> 	[Denite]g					:<C-U>DeniteBufferDir grep<CR>
 nnoremap	<silent> 	[Denite]e					:<C-U>DeniteProjectDir file_rec<CR>
-nnoremap	<silent> 	[Denite]g					:<C-U>DeniteProjectDir grep<CR>
+nnoremap	<silent> 	[Denite]E					:<C-U>DeniteProjectDir grep file_rec<CR>
 nnoremap	<silent> 	[Denite]d					:<C-U>Denite line<CR>
 nnoremap	<silent> 	[Denite]r					:<C-U>Denite file_mru<CR>
 nnoremap	<silent> 	[Denite]v					:<C-U>Denite register<CR>
