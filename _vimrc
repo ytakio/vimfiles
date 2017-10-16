@@ -512,6 +512,11 @@ set nobackup
 
 " undoファイルを作成する
 set undofile
+
+"---------------------------------------------------------------------------
+" for edit of programming
+set cinoptions+=L0
+set cinoptions+=g0
 "}}}
 
 " Color"{{{
