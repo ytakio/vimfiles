@@ -383,6 +383,8 @@ let g:vim_markdown_folding_disabled=1
 "}}}
 " Previm"{{{
 call dein#add('kannokanno/previm')
+"let g:previm_disable_default_css = 1
+let g:previm_custom_css_path = '~/vimfiles/css/github.css'
 "}}}
 " Open Browser"{{{
 call dein#add('tyru/open-browser.vim')
