@@ -15,6 +15,7 @@ endif
 " to connect fast mode for terminal
 if has('nvim')
 	set ttyfast
+	set guicursor=
 endif
 "}}}
 " User interfaces{{{
