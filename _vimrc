@@ -28,6 +28,8 @@ endif
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=n
+" <Leader> key settings
+let mapleader = " "
 
 " コンソールでのカラー表示のための設定(暫定的にUNIX専用)
 if has('unix') && !has('gui_running')
@@ -72,6 +74,14 @@ nnoremap	[Dein]		<Nop>
 nmap			<Leader>b			[Dein]
 nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
 nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+"}}}
+" NERDTree "{{{
+	call dein#add('scrooloose/nerdtree')
+	let NERDTreeQuitOnOpen = 1
+	nnoremap							[NERDTree]			<Nop>
+	nmap									<Leader>f				[NERDTree]
+	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
+	nmap			<silent>		<C-N>						[NERDTree]v
 "}}}
 " Denite"{{{
 " Denite has been replaced with denite.nvim
@@ -261,23 +271,6 @@ endif
 " neco-look: English word completion"{{{
 call dein#add('ujihisa/neco-look')
 "}}}
-" VimFiler"{{{
-if !has('nvim')
-	call dein#add('Shougo/vimfiler.vim')
-
-	"vimデフォルトのエクスプローラをvimfilerで置き換える
-	let g:vimfiler_as_default_explorer = 1
-	"セーフモードを無効にした状態で起動する
-	let g:vimfiler_safe_mode_by_default = 0
-	"-------------------------------------------------------
-	" Keymap
-	nnoremap				[VimFiler]		<Nop>
-	nmap					<Leader>f	[VimFiler]
-	nnoremap	<silent>	[VimFiler]e	:<C-U>VimFilerBufferDir<CR>
-	nnoremap	<silent>	[VimFiler]v	:<C-U>VimFilerBufferDir -buffer-name=explorer -split -simple -winwidth=35 -toggle -force-quit<CR>
-	nmap		<silent>	<C-N>		[VimFiler]v
-endif
-"}}}
 " Solarized"{{{
 call dein#add('altercation/vim-colors-solarized')
 " settings
@@ -315,65 +308,22 @@ call dein#add('tpope/vim-fugitive')
 " Lightline"{{{
 call dein#add('itchyny/lightline.vim')
 let g:lightline = {
-	\ 'colorscheme': 'solarized',
-	\ 'mode_map': {'c': 'NORMAL'},
-	\ 'active': {
-		\ 'left': [['mode', 'paste'], ['fugitive', 'filename']]
-		\ },
-	\ 'component_function': {
-		\ 'modified': 'LightLineModified',
-		\ 'readonly': 'LightLineReadonly',
-		\ 'fugitive': 'LightLineFugitive',
-		\ 'filename': 'LightLineFilename',
-		\ 'fileformat': 'LightLineFileformat',
-		\ 'filetype': 'LightLineFiletype',
-		\ 'fileencoding': 'LightLineFileencoding',
-		\ 'mode': 'LightLineMode'
-		\ }
-	\ }
+			\ 'colorscheme': 'solarized',
+			\ }
+let g:lightline.active = {
+			\ 'left': [ [ 'mode', 'paste' ],
+			\           [ 'readonly', 'filename', 'modified' ] ],
+			\ 'right': [ [ 'lineinfo' ],
+			\            [ 'percent' ],
+			\            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
+let g:lightline.inactive = {
+			\ 'left': [ [ 'filename' ] ],
+			\ 'right': [ [ 'lineinfo' ],
+			\            [ 'percent' ] ] }
+let g:lightline.tabline = {
+			\ 'left': [ [ 'tabs' ] ],
+			\ 'right': [ [ 'close' ] ] }
 
-function! LightLineModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-endfunction
-
-function! LightLineFilename()
-	return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-		\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-		\  &ft == 'unite' ? unite#get_status_string() :
-		\  &ft == 'vimshell' ? vimshell#get_status_string() :
-		\  '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-		\ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFugitive()
-	try
-		if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-			return fugitive#head()
-		endif
-	catch
-	endtry
-	return ''
-endfunction
-
-function! LightLineFileformat()
-	return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-	return winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
 "}}}
 " Tabular"{{{
 call dein#add('godlygeek/tabular')
