@@ -2,6 +2,10 @@
 " For debug about setting process{{{
 set verbose&
 "set verbose=1
+
+" For Python
+let g:python_host_prog = expand('/usr/bin/python')
+let g:python3_host_prog = expand('/usr/bin/python3')
 "}}}
 " Setting presets{{{
 " Use Vim settings, rather than Vi settings (much better!).
@@ -70,18 +74,18 @@ call dein#add(s:dein_path)
 "let g:dein#cache_directory = s:cache_path
 "-------------------------------------------------------
 " Keymap
-nnoremap	[Dein]		<Nop>
-nmap			<Leader>b			[Dein]
-nnoremap	<silent>			[Dein]u	:<C-U>call dein#update()<CR>
-nnoremap	<silent>			[Dein]c	:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+nnoremap						[Dein]						<Nop>
+nmap								<Leader>p					[Dein]
+nnoremap	<silent>	[Dein]u						:<C-U>call dein#update()<CR>
+nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 "}}}
 " NERDTree "{{{
-	call dein#add('scrooloose/nerdtree')
-	let NERDTreeQuitOnOpen = 1
-	nnoremap							[NERDTree]			<Nop>
-	nmap									<Leader>f				[NERDTree]
-	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
-	nmap			<silent>		<C-N>						[NERDTree]v
+"	call dein#add('scrooloose/nerdtree')
+"	let NERDTreeQuitOnOpen = 1
+"	nnoremap							[NERDTree]			<Nop>
+"	nmap									<Leader>f				[NERDTree]
+"	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
+"	nmap			<silent>		<C-N>						[NERDTree]v
 "}}}
 " Denite"{{{
 " Denite has been replaced with denite.nvim
@@ -89,20 +93,38 @@ call dein#add('Shougo/denite.nvim')
 
 "-------------------------------------------------------
 " Settings
-call denite#custom#source('file_rec', 'matchers', ['matcher_substring'])
+call denite#custom#option('default', {
+	\ 'prompt': '>',
+	\ 'direction': 'top',
+	\ })
+"call denite#custom#source('file_rec', 'matchers', [''])
+call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
+
+" Mapping in Denite
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
+if executable('ag')
+	call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+	call denite#custom#var('grep', 'command', ['ag'])
+	call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
+	call denite#custom#var('grep', 'recursive_opts', [])
+	call denite#custom#var('grep', 'pattern_opt', [])
+	call denite#custom#var('grep', 'separator', ['--'])
+	call denite#custom#var('grep', 'final_opts', [])
+endif
 "-------------------------------------------------------
 " Keymap
 nnoremap						[Denite]					<Nop>
 nmap								<Leader><Space>		[Denite]
-nnoremap	<silent> 	[Denite]f					:<C-U>DeniteBufferDir file<CR>
-nnoremap	<silent> 	[Denite]g					:<C-U>DeniteBufferDir grep<CR>
-nnoremap	<silent> 	[Denite]e					:<C-U>DeniteProjectDir file_rec<CR>
-nnoremap	<silent> 	[Denite]E					:<C-U>DeniteProjectDir grep file_rec<CR>
-nnoremap	<silent> 	[Denite]d					:<C-U>Denite line<CR>
-nnoremap	<silent> 	[Denite]r					:<C-U>Denite file_mru<CR>
-nnoremap	<silent> 	[Denite]v					:<C-U>Denite register<CR>
-"nmap			<silent>	<C-N>							[Denite]f
-"nmap			<silent>	<C-P>							[Denite]e
+nnoremap	<silent>	[Denite]f					:<C-U>DeniteBufferDir file<CR>
+nnoremap	<silent>	[Denite]F					:<C-U>DeniteBufferDir grep<CR>
+nnoremap	<silent>	[Denite]R					:<C-U>DeniteBufferDir file_rec<CR>
+nnoremap	<silent>	[Denite]p					:<C-U>DeniteProjectDir file_rec<CR>
+nnoremap	<silent>	[Denite]P					:<C-U>DeniteProjectDir grep<CR>
+nnoremap	<silent>	[Denite]r					:<C-U>Denite file_mru<CR>
+nnoremap	<silent>	[Denite]v					:<C-U>Denite register<CR>
 "}}}
 " NeoMRU"{{{
 call dein#add('Shougo/neomru.vim')
@@ -339,10 +361,6 @@ let g:previm_custom_css_path = '~/vimfiles/css/github.css'
 "}}}
 " Open Browser"{{{
 call dein#add('tyru/open-browser.vim')
-"}}}
-" Calendar"{{{
-call dein#add('itchyny/calendar.vim')
-let g:calendar_google_calendar = 1
 "}}}
 " gen_tags.vim{{{
 call dein#add('jsfaint/gen_tags.vim')
@@ -609,7 +627,7 @@ map Q gq
 inoremap <C-U> <C-G>u<C-U>
 "-------------------------------------------------------
 " Help
-cabbrev h vertical botright h
+cabbrev vh vertical botright h
 
 "-------------------------------------------------------
 " カーソルを表示行で移動
