@@ -608,7 +608,7 @@ endfunction
 " Keymap
 " Open MRU
 nnoremap	[Pelican]		<Nop>
-nmap			<Leader>p			[Pelican]
+nmap			<Leader>m			[Pelican]
 nnoremap	<silent>			[Pelican]r	:<C-u>PelicanPostRST<CR>
 nnoremap	<silent>			[Pelican]m	:<C-u>PelicanPostMD<CR>
 "}}}
