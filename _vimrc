@@ -80,12 +80,12 @@ nnoremap	<silent>	[Dein]u						:<C-U>call dein#update()<CR>
 nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
 "}}}
 " NERDTree "{{{
-"	call dein#add('scrooloose/nerdtree')
-"	let NERDTreeQuitOnOpen = 1
-"	nnoremap							[NERDTree]			<Nop>
-"	nmap									<Leader>f				[NERDTree]
-"	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
-"	nmap			<silent>		<C-N>						[NERDTree]v
+	call dein#add('scrooloose/nerdtree')
+	let NERDTreeQuitOnOpen = 1
+	nnoremap							[NERDTree]			<Nop>
+	nmap									<Leader>f				[NERDTree]
+	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
+	nmap			<silent>		<C-N>						[NERDTree]v
 "}}}
 " Denite"{{{
 " Denite has been replaced with denite.nvim
