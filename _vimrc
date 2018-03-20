@@ -43,6 +43,9 @@ if has('unix') && !has('gui_running')
 	endif
 	set t_Co=256
 endif
+
+" 相対行番号
+set relativenumber
 "}}}
 "}}}
 
