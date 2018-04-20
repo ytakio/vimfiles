@@ -50,6 +50,10 @@ set relativenumber
 "}}}
 
 " Plugin"{{{
+if has('nvim')
+	let g:python3_host_prog = "/usr/bin/python3.6"
+endif
+
 " Dein initial"{{{
 " Base path
 let s:config_path	= empty($XDG_CONFIG_HOME)	? expand('~/.config') : $XDG_CONFIG_HOME
@@ -299,7 +303,7 @@ call dein#add('ujihisa/neco-look')
 " Solarized"{{{
 call dein#add('altercation/vim-colors-solarized')
 " settings
-let g:solarized_termcolors=16
+let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="high"
 let g:solarized_italic=0
@@ -316,17 +320,17 @@ nnoremap <silent> <Leader>t :<C-U>TagbarOpenAutoClose<CR>
 " Doxygentoolkit"{{{
 call dein#add('takio-c/DoxygenToolkit.vim')
 "}}}
-" Gtags"{{{
-call dein#add('vim-scripts/gtags.vim')
-" let g:Gtags_Result = "ctags"
-" nmap <F2> :<C-U>copen<CR>
-" nmap <F4> :<C-U>cclose<CR>
-" nmap <F5> :<C-U>Gtags<SPACE>
-" nmap <F6> :<C-U>Gtags -f %<CR>
-" nmap <F7> :<C-U>GtagsCursor<CR>
-" nmap <F8> :<C-U>Gozilla<CR>
-" nmap <C-\><C-]> :<C-U>GtagsCursor<CR>
-"}}}
+"" Gtags"{{{
+"call dein#add('vim-scripts/gtags.vim')
+"" let g:Gtags_Result = "ctags"
+"" nmap <F2> :<C-U>copen<CR>
+"" nmap <F4> :<C-U>cclose<CR>
+"" nmap <F5> :<C-U>Gtags<SPACE>
+"" nmap <F6> :<C-U>Gtags -f %<CR>
+"" nmap <F7> :<C-U>GtagsCursor<CR>
+"" nmap <F8> :<C-U>Gozilla<CR>
+"" nmap <C-\><C-]> :<C-U>GtagsCursor<CR>
+""}}}
 " Vim Fugitive"{{{
 call dein#add('tpope/vim-fugitive')
 "}}}
@@ -365,12 +369,12 @@ let g:previm_custom_css_path = '~/vimfiles/css/github.css'
 " Open Browser"{{{
 call dein#add('tyru/open-browser.vim')
 "}}}
-" gen_tags.vim{{{
-call dein#add('jsfaint/gen_tags.vim')
-"}}}
-" denite-gtags{{{
-call dein#add('ozelentok/denite-gtags')
-"}}}
+"" gen_tags.vim{{{
+"call dein#add('jsfaint/gen_tags.vim')
+""}}}
+"" denite-gtags{{{
+"call dein#add('ozelentok/denite-gtags')
+""}}}
 
 " End loading
 call dein#end()
