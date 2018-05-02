@@ -5,7 +5,12 @@ set verbose&
 
 " For Python
 let g:python_host_prog = expand('/usr/bin/python')
-let g:python3_host_prog = expand('/usr/bin/python3')
+if has('nvim') && !executable('python3')
+	let g:python3_host_prog = "/usr/bin/python3.6"
+else
+	let g:python3_host_prog = expand('/usr/bin/python3')
+endif
+
 "}}}
 " Setting presets{{{
 " Use Vim settings, rather than Vi settings (much better!).
@@ -50,10 +55,6 @@ set relativenumber
 "}}}
 
 " Plugin"{{{
-if has('nvim')
-	let g:python3_host_prog = "/usr/bin/python3.6"
-endif
-
 " Dein initial"{{{
 " Base path
 let s:config_path	= empty($XDG_CONFIG_HOME)	? expand('~/.config') : $XDG_CONFIG_HOME
