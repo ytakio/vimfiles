@@ -5,7 +5,7 @@ set verbose&
 
 " For Python
 let g:python_host_prog = expand('/usr/bin/python')
-if has('nvim') && !executable('python3')
+if has('nvim') && executable('python3.6')
 	let g:python3_host_prog = "/usr/bin/python3.6"
 else
 	let g:python3_host_prog = expand('/usr/bin/python3')
