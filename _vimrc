@@ -2,15 +2,14 @@
 " For debug about setting process{{{
 set verbose&
 "set verbose=1
-
-" For Python
+"}}}
+" Python"{{{
 let g:python_host_prog = expand('/usr/bin/python')
 if has('nvim') && executable('python3.6')
 	let g:python3_host_prog = "/usr/bin/python3.6"
 else
 	let g:python3_host_prog = expand('/usr/bin/python3')
 endif
-
 "}}}
 " Setting presets{{{
 " Use Vim settings, rather than Vi settings (much better!).
@@ -557,6 +556,12 @@ aug vimrc.markdown
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
 aug END
 "}}}
+" For python format"{{{
+aug vimrc.python
+	au!
+	au FileType python nnoremap <buffer><silent> <Leader>r :sp<CR>:te python3.6 -i %<CR>
+aug END
+"}}}
 " For template"{{{
 aug vimrc.template
 	au!
@@ -642,6 +647,8 @@ cabbrev vh vertical botright h
 " For moving
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 nnoremap <Down> gj
 nnoremap <Up> gk
 
