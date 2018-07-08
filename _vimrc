@@ -4,11 +4,17 @@ set verbose&
 "set verbose=1
 "}}}
 " Python"{{{
-let g:python_host_prog = expand('/usr/bin/python')
-if has('nvim') && executable('python3.6')
-	let g:python3_host_prog = "/usr/bin/python3.6"
-else
-	let g:python3_host_prog = expand('/usr/bin/python3')
+if has('nvim')
+	" For Python 2.x
+	if executable('python2')
+		let g:python_host_prog = expand('python2')
+	endif
+	" For Python 3.x
+	if executable('python3.6')
+		let g:python3_host_prog = expand('python3.6')
+	elseif executable('python3')
+		let g:python3_host_prog = expand('python3')
+	endif
 endif
 "}}}
 " Setting presets{{{
