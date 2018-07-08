@@ -97,8 +97,21 @@ nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val,
 	let g:NERDTreeQuitOnOpen = 1
 	nnoremap							[NERDTree]			<Nop>
 	nmap									<Leader>f				[NERDTree]
-	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
+	nnoremap	<silent>		[NERDTree]v			:call NERDTreeToggleInCurDir()<CR>
 	nmap			<silent>		<C-N>						[NERDTree]v
+
+	function! NERDTreeToggleInCurDir()
+		" If NERDTree is open in the current buffer
+		if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+			exe ":NERDTreeClose"
+		else
+			if (expand("%:t") != '')
+				exe ":NERDTreeFind"
+			else
+				exe ":NERDTreeToggle"
+			endif
+		endif
+	endfunction
 "}}}
 " Denite"{{{
 " Denite has been replaced with denite.nvim
