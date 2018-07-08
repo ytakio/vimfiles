@@ -94,7 +94,7 @@ nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val,
 "}}}
 " NERDTree "{{{
 	call dein#add('scrooloose/nerdtree')
-	let NERDTreeQuitOnOpen = 1
+	let g:NERDTreeQuitOnOpen = 1
 	nnoremap							[NERDTree]			<Nop>
 	nmap									<Leader>f				[NERDTree]
 	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
@@ -381,6 +381,10 @@ call dein#add('tyru/open-browser.vim')
 "" denite-gtags{{{
 "call dein#add('ozelentok/denite-gtags')
 ""}}}
+"" vim-multiple-cursors{{{
+call dein#add('terryma/vim-multiple-cursors')
+let g:multi_cursor_use_default_mapping=0
+""}}}
 
 " End loading
 call dein#end()
@@ -519,7 +523,10 @@ colorscheme solarized
 "---------------------------------------------------------------------------
 " 全角スペース
 highlight JpSpace cterm=underline
-au BufRead,BufNew * match JpSpace /　/
+aug vimrc.highlight
+	au!
+	au VimEnter * match JpSpace /　/
+aug END
 
 "---------------------------------------------------------------------------
 " For Doxygen
