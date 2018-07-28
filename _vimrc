@@ -2,15 +2,20 @@
 " For debug about setting process{{{
 set verbose&
 "set verbose=1
-
-" For Python
-let g:python_host_prog = expand('/usr/bin/python')
-if has('nvim') && executable('python3.6')
-	let g:python3_host_prog = "/usr/bin/python3.6"
-else
-	let g:python3_host_prog = expand('/usr/bin/python3')
+"}}}
+" Python"{{{
+if has('nvim')
+	" For Python 2.x
+	if executable('python2')
+		let g:python_host_prog = expand('python2')
+	endif
+	" For Python 3.x
+	if executable('python3.6')
+		let g:python3_host_prog = expand('python3.6')
+	elseif executable('python3')
+		let g:python3_host_prog = expand('python3')
+	endif
 endif
-
 "}}}
 " Setting presets{{{
 " Use Vim settings, rather than Vi settings (much better!).
@@ -89,11 +94,24 @@ nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val,
 "}}}
 " NERDTree "{{{
 	call dein#add('scrooloose/nerdtree')
-	let NERDTreeQuitOnOpen = 1
+	let g:NERDTreeQuitOnOpen = 1
 	nnoremap							[NERDTree]			<Nop>
 	nmap									<Leader>f				[NERDTree]
-	nnoremap	<silent>		[NERDTree]v			:<C-U>NERDTreeToggle<CR>
+	nnoremap	<silent>		[NERDTree]v			:call NERDTreeToggleInCurDir()<CR>
 	nmap			<silent>		<C-N>						[NERDTree]v
+
+	function! NERDTreeToggleInCurDir()
+		" If NERDTree is open in the current buffer
+		if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+			exe ":NERDTreeClose"
+		else
+			if (expand("%:t") != '')
+				exe ":NERDTreeFind"
+			else
+				exe ":NERDTreeToggle"
+			endif
+		endif
+	endfunction
 "}}}
 " Denite"{{{
 " Denite has been replaced with denite.nvim
@@ -376,6 +394,10 @@ call dein#add('tyru/open-browser.vim')
 "" denite-gtags{{{
 "call dein#add('ozelentok/denite-gtags')
 ""}}}
+"" vim-multiple-cursors{{{
+call dein#add('terryma/vim-multiple-cursors')
+let g:multi_cursor_use_default_mapping=0
+""}}}
 
 " End loading
 call dein#end()
@@ -514,7 +536,10 @@ colorscheme solarized
 "---------------------------------------------------------------------------
 " 全角スペース
 highlight JpSpace cterm=underline
-au BufRead,BufNew * match JpSpace /　/
+aug vimrc.highlight
+	au!
+	au VimEnter * match JpSpace /　/
+aug END
 
 "---------------------------------------------------------------------------
 " For Doxygen
@@ -555,6 +580,12 @@ aug vimrc.markdown
 	au BufRead,BufNewFile *.md set filetype=markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
+aug END
+"}}}
+" For python format"{{{
+aug vimrc.python
+	au!
+	au FileType python nnoremap <buffer><silent> <Leader>r :sp<CR>:te python3.6 -i %<CR>
 aug END
 "}}}
 " For template"{{{
@@ -642,6 +673,8 @@ cabbrev vh vertical botright h
 " For moving
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 nnoremap <Down> gj
 nnoremap <Up> gk
 
