@@ -394,10 +394,17 @@ call dein#add('tyru/open-browser.vim')
 "" denite-gtags{{{
 "call dein#add('ozelentok/denite-gtags')
 ""}}}
-"" vim-multiple-cursors{{{
+" vim-multiple-cursors{{{
 call dein#add('terryma/vim-multiple-cursors')
 let g:multi_cursor_use_default_mapping=0
-""}}}
+"}}}
+" vim-multiple-cursors{{{
+call dein#add('aklt/plantuml-syntax')
+"}}}
+" vim-auto-save{{{
+call dein#add('vim-scripts/vim-auto-save')
+let g:auto_save=1
+"}}}
 
 " End loading
 call dein#end()
