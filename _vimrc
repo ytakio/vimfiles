@@ -339,17 +339,23 @@ nnoremap <silent> <Leader>t :<C-U>TagbarOpenAutoClose<CR>
 " Doxygentoolkit"{{{
 call dein#add('takio-c/DoxygenToolkit.vim')
 "}}}
-"" Gtags"{{{
-"call dein#add('vim-scripts/gtags.vim')
-"" let g:Gtags_Result = "ctags"
-"" nmap <F2> :<C-U>copen<CR>
-"" nmap <F4> :<C-U>cclose<CR>
-"" nmap <F5> :<C-U>Gtags<SPACE>
-"" nmap <F6> :<C-U>Gtags -f %<CR>
-"" nmap <F7> :<C-U>GtagsCursor<CR>
-"" nmap <F8> :<C-U>Gozilla<CR>
-"" nmap <C-\><C-]> :<C-U>GtagsCursor<CR>
-""}}}
+" Gtags"{{{
+if executable('global')
+	call dein#add('vim-scripts/gtags.vim')
+	" let g:Gtags_Result = "ctags"
+
+	" Keymap
+	nnoremap						[Gtags]						<Nop>
+	nmap								<Leader>g					[Gtags]
+	nnoremap	<silent>	[Gtags]d					:<C-U>Gtags -d <cword><CR>
+	nnoremap	<silent>	[Gtags]c					:<C-U>Gtags -r <cword><CR>
+	nnoremap						[Gtags]g					:<C-U>Gtags -g 
+	nnoremap	<silent>	<C-c>							:<C-U>GtagsCursor<CR>
+	nnoremap	<silent>	[Gtags]u					:<C-U>echo system('global -u')<CR>
+else
+	confirm('Please install GNU global')
+endif
+"}}}
 " Vim Fugitive"{{{
 call dein#add('tpope/vim-fugitive')
 "}}}
