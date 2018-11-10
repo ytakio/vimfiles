@@ -672,6 +672,8 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 "}}}
 
 " Keymaps"{{{
+" For US Keyboard
+nnoremap ; :
 " Don't use Ex mode, use Q for formatting
 map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
