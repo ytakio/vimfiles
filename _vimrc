@@ -1,3 +1,6 @@
+" Configure
+let g:keylayout='us'
+
 " Platform"{{{
 " For debug about setting process{{{
 set verbose&
@@ -673,7 +676,11 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 
 " Keymaps"{{{
 " For US Keyboard
-nnoremap ; :
+if g:keylayout ==? 'us'
+	nnoremap ; :
+	nnoremap : ;
+	nnoremap q; q:
+endif
 " Don't use Ex mode, use Q for formatting
 map Q gq
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
