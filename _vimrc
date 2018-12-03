@@ -412,7 +412,6 @@ call dein#add('aklt/plantuml-syntax')
 "}}}
 " vim-auto-save{{{
 call dein#add('vim-scripts/vim-auto-save')
-let g:auto_save=1
 "}}}
 
 " End loading
@@ -596,6 +595,7 @@ aug vimrc.markdown
 	au BufRead,BufNewFile *.md set filetype=markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
+	au FileType markdown let g:auto_save=1
 aug END
 "}}}
 " For python format"{{{
