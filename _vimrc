@@ -583,6 +583,12 @@ aug vimrc.vim
 	au FileType vim setlocal commentstring=\"%s
 aug END
 "}}}
+" For text"{{{
+aug vimrc.txt
+	au!
+	au FileType text let g:auto_save=1
+aug END
+"}}}
 " For makefile"{{{
 aug vimrc.make
 	au!
