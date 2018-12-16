@@ -366,10 +366,13 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('itchyny/lightline.vim')
 let g:lightline = {
 			\ 'colorscheme': 'solarized',
+			\ 'component_function': {
+			\   'gitbranch': 'fugitive#head'
+			\ },
 			\ }
 let g:lightline.active = {
 			\ 'left': [ [ 'mode', 'paste' ],
-			\           [ 'readonly', 'filename', 'modified' ] ],
+			\           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
 			\ 'right': [ [ 'lineinfo' ],
 			\            [ 'percent' ],
 			\            [ 'fileformat', 'fileencoding', 'filetype' ] ] }
