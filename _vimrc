@@ -473,6 +473,7 @@ set fileformats=unix,dos,mac
 	set title
 	" fold
 	set foldmethod=marker
+	set fillchars+=fold:-
 
 	function! FencB()
 		let c = matchstr(getline('.'), '.', col('.') - 1)
