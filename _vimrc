@@ -416,6 +416,9 @@ call dein#add('aklt/plantuml-syntax')
 " vim-auto-save{{{
 call dein#add('vim-scripts/vim-auto-save')
 "}}}
+" Vinarise {{{
+call dein#add('Shougo/vinarise.vim')
+"}}}
 
 " End loading
 call dein#end()
