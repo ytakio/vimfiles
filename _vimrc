@@ -350,8 +350,8 @@ if executable('global')
 	" Keymap
 	nnoremap						[Gtags]						<Nop>
 	nmap								<Leader>g					[Gtags]
-	nnoremap	<silent>	[Gtags]d					:<C-U>Gtags -d <cword><CR>
-	nnoremap	<silent>	[Gtags]c					:<C-U>Gtags -r <cword><CR>
+	nnoremap	<silent>	[Gtags]d					:<C-U>Gtags -d <C-R><C-W><CR>
+	nnoremap	<silent>	[Gtags]c					:<C-U>Gtags -r <C-R><C-W><CR>
 	nnoremap						[Gtags]g					:<C-U>Gtags -g 
 	nnoremap	<silent>	<C-c>							:<C-U>GtagsCursor<CR>
 	nnoremap	<silent>	[Gtags]u					:<C-U>echo system('global -u')<CR>
