@@ -475,6 +475,7 @@ set fileformats=unix,dos,mac
 	" タイトルを表示
 	set title
 	" fold
+	let g:xml_syntax_folding=1
 	set foldmethod=marker
 	set fillchars+=fold:-
 
