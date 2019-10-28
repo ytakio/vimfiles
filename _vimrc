@@ -10,13 +10,13 @@ set verbose&
 if has('nvim')
 	" For Python 2.x
 	if executable('python2')
-		let g:python_host_prog = expand('python2')
+		let g:python_host_prog = exepath('python2')
 	endif
 	" For Python 3.x
 	if executable('python3.6')
-		let g:python3_host_prog = expand('python3.6')
+		let g:python3_host_prog = exepath('python3.6')
 	elseif executable('python3')
-		let g:python3_host_prog = expand('python3')
+		let g:python3_host_prog = exepath('python3')
 	endif
 endif
 "}}}
