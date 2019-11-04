@@ -46,7 +46,7 @@ endif
 " In many terminal emulators the mouse works just fine, thus enable it.
 set mouse=n
 " <Leader> key settings
-let mapleader = " "
+let mapleader = "'"
 
 " コンソールでのカラー表示のための設定(暫定的にUNIX専用)
 if has('unix') && !has('gui_running')
@@ -162,7 +162,7 @@ call denite#custom#var('file/rec', 'command',
 
 " Change matchers.
 call denite#custom#source(
-\ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+\ 'file_mru', 'matchers', ['matcher/fuzzy'])
 call denite#custom#source(
 \ 'file/rec', 'matchers', ['matcher/cpsm'])
 
@@ -268,11 +268,11 @@ call denite#custom#action('file', 'test2',
 "}}}
 " Keymap custon{{{
 nnoremap						[Denite]					<Nop>
-nmap								<Leader><Space>		[Denite]
+nmap								<Leader>f					[Denite]
 nnoremap	<silent>	[Denite]f					:<C-U>DeniteBufferDir file<CR>
 nnoremap	<silent>	[Denite]F					:<C-U>DeniteBufferDir grep<CR>
-nnoremap	<silent>	[Denite]R					:<C-U>DeniteBufferDir file_rec<CR>
-nnoremap	<silent>	[Denite]p					:<C-U>DeniteProjectDir file_rec<CR>
+nnoremap	<silent>	[Denite]R					:<C-U>DeniteBufferDir file/rec<CR>
+nnoremap	<silent>	[Denite]p					:<C-U>DeniteProjectDir file/rec<CR>
 nnoremap	<silent>	[Denite]P					:<C-U>DeniteProjectDir grep<CR>
 nnoremap	<silent>	[Denite]r					:<C-U>Denite file_mru<CR>
 nnoremap	<silent>	[Denite]v					:<C-U>Denite register<CR>
@@ -282,9 +282,9 @@ nnoremap	<silent>	[Denite]v					:<C-U>Denite register<CR>
 call dein#add('Shougo/neomru.vim')
 
 " change to base path
-let g:neomru#file_mru_path = expand(s:config_path . 'neomru/file')
-let g:neomru#directory_mru_path = expand(s:config_path . 'neomru/directory')
-let g:neomru#follow_links = 1
+let g:neomru#file_mru_path = expand(s:config_path . '/neomru/file')
+let g:neomru#directory_mru_path = expand(s:config_path . '/neomru/directory')
+"let g:neomru#follow_links = 1
 "}}}
 " Completion"{{{
 if has('nvim') " neovim side
