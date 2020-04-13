@@ -170,6 +170,7 @@ endfunction "}}}
 nnoremap						[Defx]						<Nop>
 nmap								<Leader>f					[Defx]
 nnoremap	<silent>	[Defx]f						:<C-U>Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nmap	<silent>			<C-Q>							[Defx]f
 "}}}
 "}}}
 " Denite"{{{
