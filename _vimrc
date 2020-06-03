@@ -876,7 +876,7 @@ command! TagLastUpdate normal aLast modified:
 function! LastModified()
 	if &modified
 		let save_cursor = getpos(".")
-		let date_time=strftime('%Y-%m-%dT%T%Z')
+		let date_time=strftime('%Y-%m-%dT%T')
 		let n = min([20, line("$")])
 		keepjumps exe '1,' . n . 's#^\(.\{,10}Last modified: \).*#\1' . date_time . '#e'
 		call histdel('search', -1)
