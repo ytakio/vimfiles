@@ -599,6 +599,10 @@ call dein#add('vim-scripts/vim-auto-save')
 " Vinarise {{{
 call dein#add('Shougo/vinarise.vim')
 "}}}
+" tpope/surround {{{
+call dein#add('tpope/vim-surround')
+call dein#add('tpope/vim-repeat')
+"}}}
 
 " End loading
 call dein#end()
@@ -866,6 +870,22 @@ nnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 vnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
+" Upate last modified date"{{{
+" If buffer modified, update any 'Last modified: ' in the first 20 lines.
+" 'Last modified: ' can have up to 10 characters before (they are retained).
+" Restores cursor and window position using save_cursor variable.
+" 2020-06-03T01:53:26
+function! LastModified()
+	if &modified
+    let save_cursor = getpos(".")
+		let date_time=strftime('%Y-%m-%dT%T%Z')
+		let n = min([20, line("$")])
+		keepjumps exe '1,' . n . 's#^\(.\{,10}Last modified: \).*#\1' . date_time . '#e'
+		call histdel('search', -1)
+		call setpos('.', save_cursor)
+	endif
+endfun
+"}}}
 "}}}
 
 " Keymaps"{{{
@@ -909,7 +929,12 @@ vnoremap s :<C-U>'<,'>s//gc<left><left><left>
 "}}}
 
 " For post process"{{{
-"-------------------------------------------------------
+" For all type"{{{
+aug post.all
+	au!
+	au BufWritePre * call LastModified()
+aug END
+"}}}
 "}}}
 
 " vim:set ts=2 sts=0 sw=2 tw=0 fdm=marker:
