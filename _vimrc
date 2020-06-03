@@ -593,9 +593,6 @@ let g:multi_cursor_use_default_mapping=0
 " plantuml-syntax{{{
 call dein#add('aklt/plantuml-syntax')
 "}}}
-" vim-auto-save{{{
-call dein#add('vim-scripts/vim-auto-save')
-"}}}
 " Vinarise {{{
 call dein#add('Shougo/vinarise.vim')
 "}}}
@@ -778,7 +775,7 @@ aug END
 " For text"{{{
 aug vimrc.txt
 	au!
-	au FileType text let g:auto_save=1
+	"au FileType text let g:auto_save=1
 aug END
 "}}}
 " For makefile"{{{
@@ -793,7 +790,7 @@ aug vimrc.markdown
 	au BufRead,BufNewFile *.md set filetype=markdown
 	au FileType markdown setlocal softtabstop=4 expandtab cocu=
 	au FileType markdown nnoremap <buffer><silent> <Leader>t :<C-U>Toc<CR>
-	au FileType markdown let g:auto_save=1
+	"au FileType markdown let g:auto_save=1
 aug END
 "}}}
 " For python format"{{{
@@ -870,14 +867,15 @@ nnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 vnoremap <silent> co :<C-U>ContinuousNumber <C-A><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
-" Upate last modified date"{{{
+" Last modified"{{{
 " If buffer modified, update any 'Last modified: ' in the first 20 lines.
 " 'Last modified: ' can have up to 10 characters before (they are retained).
 " Restores cursor and window position using save_cursor variable.
 " 2020-06-03T01:53:26
+command! TagLastUpdate normal aLast modified: 
 function! LastModified()
 	if &modified
-    let save_cursor = getpos(".")
+		let save_cursor = getpos(".")
 		let date_time=strftime('%Y-%m-%dT%T%Z')
 		let n = min([20, line("$")])
 		keepjumps exe '1,' . n . 's#^\(.\{,10}Last modified: \).*#\1' . date_time . '#e'
