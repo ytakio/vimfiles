@@ -79,7 +79,7 @@ if has('vim_starting')
 endif
 "}}}
 " Start loading
-"if dein#load_state(s:plugin_path)
+if dein#load_state(s:plugin_path)
 call dein#begin(s:plugin_path)
 
 " Dein "{{{
@@ -603,8 +603,8 @@ call dein#add('tpope/vim-repeat')
 
 " End loading
 call dein#end()
-"call dein#save_state()
-"endif
+call dein#save_state()
+endif
 " Dein check"{{{
 if dein#check_install()
 	call dein#install()
