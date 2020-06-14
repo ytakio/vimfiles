@@ -47,6 +47,7 @@ endif
 set mouse=n
 " <Leader> key settings
 let mapleader = "'"
+nnoremap <Leader> <Nop>
 
 " コンソールでのカラー表示のための設定(暫定的にUNIX専用)
 if has('unix') && !has('gui_running')
@@ -80,20 +81,30 @@ endif
 "}}}
 " Start loading
 if dein#load_state(s:plugin_path)
+"-------------------------------------------------------
+" Settings
+let g:dein#cache_directory = s:cache_path
 call dein#begin(s:plugin_path)
 
 " Dein "{{{
 call dein#add(s:dein_path)
 
 "-------------------------------------------------------
-" Settings
-"let g:dein#cache_directory = s:cache_path
-"-------------------------------------------------------
 " Keymap
 nnoremap						[Dein]						<Nop>
 nmap								<Leader>p					[Dein]
 nnoremap	<silent>	[Dein]u						:<C-U>call dein#update()<CR>
 nnoremap	<silent>	[Dein]c						:<C-U>call map(dein#check_clean(), "delete(v:val, 'rf')")<CR>
+"}}}
+" Solarized"{{{
+call dein#add('altercation/vim-colors-solarized')
+" settings
+let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="high"
+let g:solarized_italic=0
+let g:solarized_visibility="normal"
+let g:solarized_hitrail=1
 "}}}
 " Defx "{{{
 call dein#add('Shougo/defx.nvim')
@@ -479,7 +490,7 @@ call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
 " Settings directory to my snippets
- let g:neosnippet#snippets_directory = '~/vimfiles/vim/snippets'
+let g:neosnippet#snippets_directory = '~/vimfiles/vim/snippets'
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -501,16 +512,6 @@ endif
 "}}}
 " neco-look: English word completion"{{{
 call dein#add('ujihisa/neco-look')
-"}}}
-" Solarized"{{{
-call dein#add('altercation/vim-colors-solarized')
-" settings
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_italic=0
-let g:solarized_visibility="normal"
-let g:solarized_hitrail=1
 "}}}
 " Tagbar"{{{
 call dein#add('majutsushi/tagbar')
