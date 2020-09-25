@@ -601,6 +601,9 @@ call dein#add('Shougo/vinarise.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
 "}}}
+" keith/swift.vim {{{
+call dein#add('keith/swift.vim')
+"}}}
 
 " End loading
 call dein#end()
