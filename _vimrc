@@ -548,7 +548,7 @@ call dein#add('itchyny/lightline.vim')
 let g:lightline = {
 			\ 'colorscheme': 'solarized',
 			\ 'component_function': {
-			\   'gitbranch': 'fugitive#head'
+			\   'gitbranch': 'FugitiveHead'
 			\ },
 			\ }
 let g:lightline.active = {
@@ -564,6 +564,9 @@ let g:lightline.inactive = {
 let g:lightline.tabline = {
 			\ 'left': [ [ 'tabs' ] ],
 			\ 'right': [ [ 'close' ] ] }
+" Powerline Font
+" let g:lightline.separator = {'left': "\ue0b0", 'right': "\ue0b2"}
+" let g:lightline.subseparator = {'left': "\ue0b1", 'right': "\ue0b3"}
 
 "}}}
 " Tabular"{{{
@@ -600,6 +603,9 @@ call dein#add('Shougo/vinarise.vim')
 " tpope/surround {{{
 call dein#add('tpope/vim-surround')
 call dein#add('tpope/vim-repeat')
+"}}}
+" keith/swift.vim {{{
+call dein#add('keith/swift.vim')
 "}}}
 
 " End loading
