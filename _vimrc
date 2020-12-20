@@ -101,10 +101,14 @@ call dein#add('altercation/vim-colors-solarized')
 " settings
 let g:solarized_termcolors=256
 let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_italic=0
-let g:solarized_visibility="normal"
-let g:solarized_hitrail=1
+let g:solarized_contrast="normal"
+let g:solarized_italic=1
+let g:solarized_visibility="low"
+let g:solarized_hitrail=0
+"}}}
+" One Dark"{{{
+call dein#add('joshdick/onedark.vim')
+" settings
 "}}}
 " Defx "{{{
 call dein#add('Shougo/defx.nvim')
@@ -546,9 +550,9 @@ call dein#add('tpope/vim-fugitive')
 " Lightline"{{{
 call dein#add('itchyny/lightline.vim')
 let g:lightline = {
-			\ 'colorscheme': 'solarized',
+			\ 'colorscheme': 'onedark',
 			\ 'component_function': {
-			\   'gitbranch': 'fugitive#head'
+			\   'gitbranch': 'FugitiveHead'
 			\ },
 			\ }
 let g:lightline.active = {
@@ -564,6 +568,9 @@ let g:lightline.inactive = {
 let g:lightline.tabline = {
 			\ 'left': [ [ 'tabs' ] ],
 			\ 'right': [ [ 'close' ] ] }
+" Powerline Font
+" let g:lightline.separator = {'left': "\ue0b0", 'right': "\ue0b2"}
+" let g:lightline.subseparator = {'left': "\ue0b1", 'right': "\ue0b3"}
 
 "}}}
 " Tabular"{{{
@@ -737,7 +744,7 @@ set cursorline
 
 "---------------------------------------------------------------------------
 " colorscheme を設定する
-colorscheme solarized
+colorscheme onedark
 
 "---------------------------------------------------------------------------
 " 見にくいハイライトを上書き
