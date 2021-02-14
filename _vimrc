@@ -578,7 +578,9 @@ call dein#add('godlygeek/tabular')
 "}}}
 " Vim Markdown"{{{
 call dein#add('plasticboy/vim-markdown')
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
 "}}}
 " Previm"{{{
 call dein#add('kannokanno/previm')
