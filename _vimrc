@@ -810,6 +810,12 @@ aug vimrc.python
 	au FileType python nnoremap <buffer><silent> <Leader>r :sp<CR>:te python3.6 -i %<CR>
 aug END
 "}}}
+" For JavaScript format"{{{
+aug vimrc.js
+	au!
+	au FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+aug END
+"}}}
 " For template"{{{
 aug vimrc.template
 	au!
