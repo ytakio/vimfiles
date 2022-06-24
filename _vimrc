@@ -120,7 +120,7 @@ autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort "{{{
 	" Define mappings
 	nnoremap <silent><buffer><expr> <CR>
-	\ defx#do_action('open')
+	\ defx#do_action('drop')
 	nnoremap <silent><buffer><expr> c
 	\ defx#do_action('copy')
 	nnoremap <silent><buffer><expr> m
@@ -128,11 +128,11 @@ function! s:defx_my_settings() abort "{{{
 	nnoremap <silent><buffer><expr> p
 	\ defx#do_action('paste')
 	nnoremap <silent><buffer><expr> l
-	\ defx#do_action('open')
+	\ defx#do_action('drop')
 	nnoremap <silent><buffer><expr> E
-	\ defx#do_action('open', 'vsplit')
+	\ defx#do_action('drop', 'vsplit')
 	nnoremap <silent><buffer><expr> P
-	\ defx#do_action('open', 'pedit')
+	\ defx#do_action('drop', 'pedit')
 	nnoremap <silent><buffer><expr> o
 	\ defx#do_action('open_or_close_tree')
 	nnoremap <silent><buffer><expr> K
@@ -181,11 +181,20 @@ function! s:defx_my_settings() abort "{{{
 	nnoremap <silent><buffer><expr> cd
 	\ defx#do_action('change_vim_cwd')
 endfunction "}}}
+" Option {{{
+call defx#custom#option('_', {
+	\ 'winwidth': 40,
+	\ 'split': 'vertical',
+	\ 'direction': 'topleft',
+	\ 'show_ignored_files': 1,
+	\ 'resume': 1,
+	\ })
+" }}}
 " Keymap{{{
 nnoremap						[Defx]						<Nop>
 nmap								<Leader>f					[Defx]
-nnoremap	<silent>	[Defx]f						:<C-U>Defx `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nmap	<silent>			<C-Q>							[Defx]f
+nnoremap	<silent>	[Defx]f						:<C-U>Defx `escape(expand('%:p:h'), ' :')` -search=`expand('%:p')` -buffer-name=`'defx' . tabpagenr()`<CR>
+nmap	<silent>			<C-e>							[Defx]f
 "}}}
 "}}}
 " Denite"{{{
