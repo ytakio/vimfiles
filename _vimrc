@@ -394,7 +394,7 @@ if has('nvim') " neovim side
 	call dein#add('davidhalter/jedi')
 	"}}}
 	" deoplete-jedi"{{{
-	call dein#add('zchee/deoplete-jedi')
+	call dein#add('deoplete-plugins/deoplete-jedi')
 	"}}}
 	" deoplete-gtags.vim{{{
 	call dein#add('ozelentok/deoplete-gtags')
@@ -578,8 +578,8 @@ let g:lightline.tabline = {
 			\ 'left': [ [ 'tabs' ] ],
 			\ 'right': [ [ 'close' ] ] }
 " Powerline Font
-" let g:lightline.separator = {'left': "\ue0b0", 'right': "\ue0b2"}
-" let g:lightline.subseparator = {'left': "\ue0b1", 'right': "\ue0b3"}
+let g:lightline.separator = {'left': "\ue0b0", 'right': "\ue0b2"}
+let g:lightline.subseparator = {'left': "\ue0b1", 'right': "\ue0b3"}
 
 "}}}
 " Tabular"{{{
@@ -603,7 +603,7 @@ call dein#add('tyru/open-browser.vim')
 "call dein#add('jsfaint/gen_tags.vim')
 ""}}}
 "" denite-gtags{{{
-"call dein#add('ozelentok/denite-gtags')
+call dein#add('ozelentok/denite-gtags')
 ""}}}
 " vim-multiple-cursors{{{
 call dein#add('terryma/vim-multiple-cursors')
