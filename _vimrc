@@ -786,6 +786,9 @@ aug vimrc.all
 	" Also don't do it when the mark is in the first line, that is the default
 	" position when opening a file.
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+	" To force vimdiff with wrap option
+	" 'wrap<' mean copying from global value
+	au FilterWritePre * if &diff | setlocal wrap< | endif
 aug END
 "}}}
 " For vim scripts"{{{
