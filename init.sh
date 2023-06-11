@@ -6,5 +6,5 @@ rm -rf $TOOLS_DIR
 mkdir -p $TOOLS_DIR; cd $TOOLS_DIR
 git clone git://github.com/Shougo/dein.vim
 cd $TOOLS_DIR/dein.vim
-#git checkout ver.2.1
+git checkout ver.2.2
 

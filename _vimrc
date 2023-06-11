@@ -73,7 +73,7 @@ let s:plugin_path	= s:data_path . '/plugins'
 let s:dein_path		= s:plugin_path . '/repos/github.com/Shougo/dein.vim'
 if has('vim_starting')
 	if !isdirectory(s:dein_path)
-		call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_path))
+		call system('git clone https://github.com/Shougo/dein.vim -b 2.2 ' . shellescape(s:dein_path))
 	endif
 	" Required:
 	let &runtimepath = s:dein_path . ',' . &runtimepath
